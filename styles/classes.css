@@ -1,0 +1,22 @@
+.hidden {
+    display : none;
+}
+
+ .even {
+     background-color: #fff;
+ }
+
+ .bold { font-weight : bold;}
+
+  .small,small {
+    font-size: smaller;
+ }
+
+ .right { text-align: right;}
+ .center { text-align: center;}
+ .controller  {
+    text-align: center;
+    font-size: 10px;
+    max-width: 826px;;
+ }
+

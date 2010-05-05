@@ -1,0 +1,60 @@
+ul#tabs{
+    padding : 0;
+    margin : 0;
+    margin-left: 15px;
+}
+ul#tabs li{
+    cursor:pointer;
+    float : left;
+    width : 150px;
+    padding : 5px;
+    background-color: #ddd;
+    list-style-type:none;
+    color : #666;
+    text-align : center;
+    margin : 0;
+    
+}
+
+ul#tabs.small li{
+    width : 20px;
+}
+
+
+ul#tabs li.current{     
+    background-color: #f1c684;
+    color : #a44906;
+    font-weight:bold;
+}
+
+#tabs a {
+        color : #fff;
+}
+
+#panes {
+    clear:left;    
+    margin-left: 15px;
+    width : auto;
+    padding-top : 15px;
+    padding-bottom : 5px;
+    width : 665px;
+    background-color:#f1c684;
+}
+
+.tabs3 > *{
+    display : inline-block;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    
+
+}
+
+.tabs3 a {
+    padding : 10px;
+    font-size : 17px;
+}
+
+.tabs3 .current {
+    background-color: #ddd;
+}

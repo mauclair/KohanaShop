@@ -1,0 +1,53 @@
+#leftMenu {
+	 /*position : absolute;
+	 top : 210px;
+	 left : 51px;*/
+	 /*margin-left : 51px;*/
+	 float:left;
+	 width : 200px;
+	 padding-left : 51px;
+         margin-right: 20px;
+}
+#leftMenu h1,#leftMenu h2,#leftMenu h3, #leftMenu h4,#leftMenu h5{
+		color : #f2485c;
+	}
+#leftMenu strong{ color : #f2485c; Font-family:georgia; margin-left : 5px;}
+#leftMenu a { text-decoration: none;}
+
+.menuWrapper ul{
+      margin : 0px;
+      padding : 0px;
+      padding-left : 1em;
+ }
+ .menuWrapper ul li {
+    list-style: none;
+    padding-top: 1px;
+ }
+ .menuWrapper ul li ul li {
+    list-style: circle;
+ }
+
+ .menuWrapper a.current {
+     font-weight : bold;
+     color : #000;
+ }
+
+ #accordion strong{
+    background-color :  #a44906;
+    display : block;
+    padding : 5px;
+    cursor:pointer;
+ }
+
+ #accordion strong.current {
+     background-color: #f2485c;
+ }
+
+ #accordion strong, #accordion strong a {
+     color : #fff;
+ }
+
+ #indikace_list {
+     height : 500px;
+     overflow :scroll;
+}

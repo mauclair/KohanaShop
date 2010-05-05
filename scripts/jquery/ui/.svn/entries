@@ -1,0 +1,239 @@
+10
+
+dir
+0
+https://psnobl.googlecode.com/svn/trunk/shop/scripts/jquery/ui
+https://psnobl.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b1a19b50-573f-0410-a76b-43d55c7074bc
+
+
+
+
+
+
+
+empty
+
+ui.core.js
+file
+
+
+
+add
+
+i18n
+dir
+
+
+
+add
+
+effects.scale.js
+file
+
+
+
+add
+
+ui.tabs.js
+file
+
+
+
+add
+
+effects.clip.js
+file
+
+
+
+add
+
+ui.progressbar.js
+file
+
+
+
+add
+
+effects.core.js
+file
+
+
+
+add
+
+effects.blind.js
+file
+
+
+
+add
+
+effects.shake.js
+file
+
+
+
+add
+
+minified
+dir
+
+
+
+add
+
+ui.dialog.js
+file
+
+
+
+add
+
+packed
+dir
+
+
+
+add
+
+ui.accordion.js
+file
+
+
+
+add
+
+effects.slide.js
+file
+
+
+
+add
+
+effects.explode.js
+file
+
+
+
+add
+
+ui.selectable.js
+file
+
+
+
+add
+
+effects.drop.js
+file
+
+
+
+add
+
+ui.draggable.js
+file
+
+
+
+add
+
+ui.droppable.js
+file
+
+
+
+add
+
+effects.highlight.js
+file
+
+
+
+add
+
+ui.sortable.js
+file
+
+
+
+add
+
+ui.datepicker.js
+file
+
+
+
+add
+
+effects.bounce.js
+file
+
+
+
+add
+
+effects.pulsate.js
+file
+
+
+
+add
+
+ui.resizable.js
+file
+
+
+
+add
+
+ui.slider.js
+file
+
+
+
+add
+
+jquery.ui.all.js
+file
+
+
+
+add
+
+effects.fold.js
+file
+
+
+
+add
+
+effects.transfer.js
+file
+
+
+
+add
+

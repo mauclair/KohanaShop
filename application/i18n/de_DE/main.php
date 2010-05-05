@@ -1,0 +1,35 @@
+<?php
+ $lang = array(
+       'update' => 'Aktualisieren',
+       'home'=>'Startseite',
+       'home-img'=>'<img src="img/home_16.png" title="Startseite" alt="Startseite" /><small>Startseite</small>',
+       'add' => 'Neu',
+       'show' => 'Zeigen...',
+       'browse' => 'Browse',
+        'list'=>'List',
+       'rescan'=> 'Erneut suchen',
+       'edit'=>'Edit',
+       'search'=>'Suchen',
+       'size'=>'res.:',
+       'save' => 'Speichern',
+       'preview'=>'Preview',
+       'dir_count'=>'Dirs',
+       'img_count'=>'Bilder',
+       'vid_count'=>'Video',
+       'top' => '&uarr; aufwärts',
+       'free' => 'Frei',
+       'delete'=>'Löschen',
+        'delete-confirm' => 'Wollen Sie wirklich um diesen Artikel zu löschen. Dieser Vorgang kann nicht rückgängig gemacht werden!',
+       'untagged-only' => 'Hide/show untagged directories',
+        'toggle-controls-on' => 'Tags bearbeiten',
+       'toggle-controls-off' => 'Verhindern Bearbeitungt',
+       'navigation' => 'Navigation',
+       'advertisement' => 'Reklamme',
+       'delete_confirm' => 'Do you want to delete this?',
+        'reload' => 'Reload',
+        'go' => 'Go',
+      'register'=>'Register',
+ );
+
+?>
+	
