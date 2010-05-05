@@ -1,0 +1,295 @@
+
+ Stegger - Simple But Secure Steganography For PHP
+
+    Introduction
+
+        Steganography is the art (and science) of hiding data within an image file. The
+        reasons should be fairly obvious, you have something you want to hide, and the
+        best place to hide something is in the last place anyone will look for it, right
+        under thier nose. Simply put, a secret is not a secret if everyone knows about it.
+
+    How to use it
+
+        This is a short run through of how to use the class, for anything not covered
+        here read the source code, it is heavily commented.
+
+        1. First things first you should either include the Stegger class in your script
+           or paste the contents of the Stegger file into your PHP file, its as simple as..
+
+           include_once('Stegger.class.inc.php');
+
+        2. Now we need to create the Stegger object so we can use it, you can call the
+           object whatever you want, for this example I will be calling it $Stegger.
+
+           $Stegger = new Stegger();
+
+        3. Before we can get to hiding data in an image we need to know where or what it
+           is, Stegger will take data as a file upload, path or URL to file, plain text
+           messages or multiple files through a glob style string (/*.txt).
+
+                - Path to local file(s) eg:
+
+                    Linux:
+                    /home/something/secretfile.txt
+                    /path/to/all/files/like/*.txt
+
+                    Windows:
+                    C:/Windows/but/with/bars/secretfile.txt
+                    C:/Windows/can/do/this/too/*.txt
+
+                - URL to remote file
+
+                    ftp://username:passwizord@ftp.ihopethisonedoesntexist.com/secretfile.txt
+                    ssh2.sftp://username:passwizord@ilovemesomeesefteepee.com:22/secretfile.txt
+                    http://www.secretfiles.com/secretfile.txt
+                    https://www.secureURL.com/secretfle.txt
+
+                - File upload through PHP
+
+                    $_FILES['secretfile']
+
+                - Text messages
+
+                    Hey,
+                    Meet me at the place at 12!
+
+           For this example we will be hiding a file uploaded through a form, for more
+           examples please check the optional extras section of this file, please note
+           that you can just pass the file directly and do not need to assign it to
+           another variable, I am just doing it for clarity.
+
+           $SecretData = $_FILES['secretfile'];
+
+        4. Now that we have the data we want to hide we need to get the image, just like
+           with the secret data you can supply an image in different ways, for this example
+           we will be using a URL but you can use paths or file uploads as well.
+
+           $Image = 'http://secret.someURL.com/image.jpg';
+
+        5. Stegger allows encryption using a build in encryption scheme that uses a public
+           and private key, the public key can be set in the Stegger source file but you
+           need to provide the private key at run time.
+
+           $Key = 'Wow this is a very very very long key that I am typing';
+
+        6. Ok its time to let Stegger work its magic, there is only one method to call.
+
+           $Stegger->Put($SecretData, $Image, $Key);
+
+           The image will automatically be output to the users browser to be downloaded.
+           If your script is used from the command line or you just want to save the
+           encoded image somewhere on the server you can supply a path to save the image
+           to, if you use the script from the command line you must provide the output
+           path.
+
+           $Stegger->Put($SecretData, $Image, $Key, '/some/local/path/image.png');
+
+           The key and output path parameters are optional, at the very least you just
+           have to provide an image and something to hide.
+
+        7. To get our secret data back out of the image we use a method that works
+           much like the Put() method except it does not need the secret data parameter.
+
+           $Stegger->Get($Image, $Key);
+
+           If you have multiple files or if you are using a script from the command line
+           you need to specify an output path.
+
+           $Stegger->Get($Image, $Key, '/save/files/to/this/path/');
+
+    Optional extras
+
+        As you may have noticed above, Stegger is pretty flexible in the way it takes
+        certain parameters, you can provide PHP file upload variables, paths and URLs
+        but there is one more trick up Stegger's sleeve, you can supply more than
+        one file upload, URL, message or path by passing them as an array, for
+        a better understanding look at the small example below.
+
+        // Instantiate the Stegger object
+        $Stegger = new Stegger();
+
+        // We want to hide all the .txt files in this directory and a php file from another
+        $SecretData[] = '/some/path/to/files/*.txt';
+        $SecretData[] = '/some/path/to/files/file.php';
+
+        // Download two files from the internet and hide them
+        $SecretData[] = 'http://some.URL.com/secretfile1.txt';
+        $SecretData[] = 'ftp://some.URL2.com/secretfile2.txt';
+
+        // We will also be hiding a file that was uploaded through a form
+        $SecretData[] = $_FILES['secretfile'];
+
+        // And we will encode a little message to the person who will decode this
+        $SecretData[] = "Heya,\n You can find the stuff in the thing\nThanks";
+
+        // And that is all there is to it
+        $Stegger->Put($SecretData, 'http://some.image.com/image.gif');
+
+    How it works
+
+        Steganography isn't as hard as it sounds, there are many methods one can use to
+        hide data within an image, none of them are right or wrong but some have more
+        limitations than others. Before I can get into how it's done in this class I
+        feel it is important to discuss the other methods.
+
+        By far the easiest way to hide data within an image is to store it in the comment
+        field of the image file, this is not an ideal method at all. Even if you could get
+        past the fact that the data will be trivial to find you will probably find that
+        the 255 bytes of space (on average) is not enough to store anything worthwhile.
+        This method also requires special knowledge of the specific image type of the
+        image you wish to hide the data inside.
+
+        Another method that is frequently employed for steganography is to utilise the
+        unused space allocated for colour information (a 32 bit colour often only uses
+        24 bits of space). A variation of this method is to use the space allocated for
+        transparency (the alpha channel, which yields 7 bits of data per pixel) but
+        that depends on the image type and if it uses alpha blending or a real alpha
+        channel. Although data hidden with these methods is harder to find it can still
+        be detected by the trained eye or some specialist tools, once someone finds
+        that the unused space has been used they know there is secret data, which means
+        even if your data is protected with encryption, we have failed since all this
+        steganography stuff is about being evasive and keeping the data hidden.
+
+        The method employed by the Stegger class is different to the above methods in
+        that it does not store data in any empty space within the image. If that does
+        not make much sense to you yet, don't  worry, read on.
+
+        The best way to learn about something is to understand the fundementals of its
+        seperate parts, in steganography there are two parts we need to learn about,
+        the image (in which we will be hiding data) and the data (which we will be
+        hiding inside the image). At the most basic level, all images are made up of
+        pixels (also known by thier not so cool name, picture elements), each pixel
+        is basically a tiny little block that displays a colour and all colours are
+        made up from a combination of the three primary colours, red, green and blue.
+        Each pixel holds information about these three primary colours to work out
+        what colour it should be, each primary colour in a (32 bit or 24 bit) pixel
+        takes up 1 byte of data which means each primary colour is represented by
+        a number between 0 (no colour) and 255 (full colour). So the colour white
+        on your computer screen is not a lack of all colour, rather, it is all the
+        primary colours turned on full blast (red: 255, green: 255, blue: 255).
+
+        Stegger takes advantage of these image basics to hide data by altering the
+        value of each primary colour in each pixel to either reflect a 1 or a 0,
+        because as you should know, all digital data is just a sequence of 1's and
+        0's, binary. There are a number of ways to alter a number to represent a
+        1 or a 0, the method that Stegger (and some other tools) uses is to alter
+        the number to be either odd or even, this allows us to store 1 bit of data
+        in every primary colour which means we store 3 bits of data symbolically
+        within each pixel.
+
+        Now 3 bits per pixel might not sound like enough to hide data but if you
+        consider that an 800 x 600 pixel image has 480 000 pixels and that we can
+        spread the data through-out some or all of those pixels, we have a viable
+        way of storing data in an image (that 800 x 600 pixel image would allow
+        us to store about 175KB of data with compression that could mean over a
+        Megabyte of text data).
+
+        The advantage of this method is that the data is stored symbolically which
+        means an attacker has no way of knowing for sure if each pixel is representing
+        some data or if that is infact the way the image was made.
+
+        There are limitations to this method however, namely, the image needs to
+        be saved in a lossless format or the data we have symbolically stored inside
+        the image will be lost or mangled. This does not mean this method cannot be
+        used for formats like JPEG and GIF, but to work with those formats rather
+        than assigning an odd or even number per primary colour in a pixel you would
+        need to look for the closest odd or even number in the colour index of the
+        image and you would need to make sure there were not too many similar colours
+        in the colour index or they will be lost when the image is saved, it is for
+        this reason that Stegger saves all encoded images as a PNG, which is lossless.
+
+        Please look at the images in the docs/images/ directory for a graphical summary
+        of what was said above.
+
+    How is this useful
+
+        Steganography has a stigma attached to it, its cool but ultimately useless,
+        that may be the case if you have nothing to be evasive about or no one to
+        evade (which means you're either a saint or naive, possibly both) but for
+        everyone else steganography can be not only a cool tool, but a useful one too.
+
+        Sometimes encryption is not enough, sometimes we want to hide the fact that we
+        even have data to encrypt. Imagine for a minute that you have reason to believe
+        your connection is being sniffed, perhaps its part of your work/univeristy/isp's
+        security policy, if you were to just merely encrypt the data and it was to be
+        intercepted between point A and point B, sure your data would be relatively
+        safe (assuming the person who intercepted it isn't the type to link up a few
+        boxes and try crack the data for 8 months) but you would have let the attacker
+        know something very valuable, that you have something to hide and whilst they
+        may not be able to get the decrypted data, they will have an incentive to keep
+        digging and watch you. If we were to use the same analogy but this time instead
+        of sending an encrypted file you send a joke image to a friend that has your
+        secret data encrypted and encoded inside, the email with the image attached
+        would be sniffed but the attacker would simply laugh it off as one of those
+        silly joke emails that everyone hates and spend his time looking for more
+        obvious targets.
+
+        The most exciting thing about steganography is the fact that web is littered
+        with images, you could take an encoded image and send it to one of the large
+        free image hosting sites like flickr and imageshack, or make a page on myspace
+        about a fictional person and encode secret data into a misc image on the page
+        and no one would be the wiser, it could be the most public of places, a million
+        people could look at the image everyday and nobody would even look twice.
+
+    Security
+
+        It has been said that security through obscurity is no security at all, whilst
+        I think we can all fundementally agree with that point, it needs to be said that
+        obscurity does help. Evasion can be a key factor in keeping anything secure, it
+        is hard for an attacker to blow something up if they can't find it and even
+        harder if they don't know for sure that it exists.
+
+        How many digital images would you say you have seen in your life time? How many
+        times when looking at or glancing over a digital image did you wonder what sort of
+        secret data was encoded inside it? If you are a normal person (which you might
+        not be if you google for steganography applications) you have never wondered
+        about secret data encoded in any images, even if you thought about steganography
+        regularly, there are just too many images on the internet to know which ones
+        to examine closer.
+
+        That being said, evasion is not enough, and this is why every little piece of
+        data encoded into an image with Stegger is encrypted with a custom (and that
+        means obscure) two way encryption algorithm called Secrypt.
+
+        Although I can't guarantee anything (as the GNU license states), I would be
+        extremely suprised if an untrusted party was able to discover your secret data
+        inside your image file. I would be even more suprised if that untrusted party
+        was able to crack the encryption (assuming you used a strong key). If the data
+        was discovered by an attacker I would think that the weak link in the security
+        chain was a person and not the steganography method or encyrption scheme used.
+
+    Disclaimer
+
+        Unfortunately we aren't all bound by the same laws as we are not governed by the
+        same people with the same ideals (which is probably a good thing). The country
+        in which this application was written and the country in which the author resides
+        have no laws against its citizens possessing knowledge of, or developing tools for,
+        encryption, steganography and other fields of computer science that aid in evasion
+        and/or security. If you are living in a country or state where the use of an
+        application like this is considered illegal (some states in the US might) then
+        no matter how just you may think your reasoning is in believing the laws are
+        prehistoric and ignorant, I emplore you, DO NOT break the law. The author
+        cannot and will not take any responsibility for your actions.
+
+        Some people seem to consistantly confuse certain technlogies with illicit activities,
+        and like those technologies, this application can be used for good or bad,
+        its use is a reflection apon the user rather than the author, so if you and your
+        drug cartel buddies get caught posting images with secret infromation inside on
+        flickr, do not drag me into court, it is all on you, and if you happen to save
+        the world or something using this application (ok now I'm really stretching it)
+        I can't take responsibility for that either. They are your actions and your
+        consequences.
+
+    About The Author
+
+        My name is Warren Smith and if you have anything more worthwhile or interesting
+        for me to be doing other than making stuff like this, I am available.
+
+        If you have any bug reports, improvements or cool ideas about this application
+        feel free to drop me an email.
+
+        I can be contacted at smythinc (at) gmail (dot) com
+
+    Requirements
+
+        PHP >= 4.3.0 with the Zlib extension

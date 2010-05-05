@@ -1,0 +1,73 @@
+#slozeni_wrapper{
+    display:block;
+    float: left;
+    width: 300px;
+    border : 1px solid red;
+    position:relative;
+}
+
+#caj_slozeni{
+    width: 300px;
+}
+#caj_slozeni_drop{
+    width: 300px;
+}
+
+#caj_ingredience{
+    margin-left : 310px;
+    width: 300px;
+    border : 1px solid gray;
+    position:relative;
+}
+
+.caj_item {
+    position:relative;
+    width: 295px;    
+    overflow:auto;
+    margin-bottom: 2px;
+    background-color: #aaa;
+}
+
+.caj_item_name{
+    width: 250px;
+    float:left;
+    background-color : gray;
+}
+
+.caj_item_rest{
+    margin-left : 250px;
+    width:45px;
+    background-color: #aaa;
+}
+
+.ui-draggable {
+    border:1px solid green;
+}
+
+.ui-state-hover {
+    background-color:yellow;
+}
+
+.ui-state-active {
+    background-color: gray;
+}
+
+.ing_controls {
+    cursor:pointer;
+    background-color: black;
+    float:right;
+    padding:2px;
+    position:relative;
+    width:20px;
+}
+.ing_controls .delete{
+    color:#f00;
+    font-weight:bold;
+    font-size:9px;
+
+}
+
+.ingredience_item{
+    position:relative;
+    clear:both;
+}

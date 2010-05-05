@@ -1,0 +1,10 @@
+@CHARSET "UTF-8";
+
+#leftMenu, #topMenu, #footer, #header, .minicart, #loggedInfo, #quickSearch, #mainLeft, #leftMenuBar, #quickSearch,#advancedSearch, #minicart {
+	display : none;
+}
+
+#mainWrapper{
+	display : block;
+}
+

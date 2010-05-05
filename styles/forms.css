@@ -1,0 +1,45 @@
+.requied{	position : relative;}
+.infoImg{ position:relative; left : -20px; padding-top : 5px;}
+
+form.big { width: 650px;;  }
+
+fieldset { margin: 0 0 22px 1em; border: 1px solid #a44906; padding: 12px 17px; background-color: #fbeddf; }
+legend {  background-color:  #efbd74; border: 1px solid #a44906; color: #FFFFFF; font-weight: bold; padding: 4px 8px; }
+legend a { font-size:small; margin-left : 2em;}
+
+label.float { float: left; display: block; width: 200px; margin: 4px 0 0 0; clear: left; padding-right : 1em; text-align:right;}
+label {  width: auto; margin: 0 0 10px 0; }
+label.spam-protection { display: inline; width: auto; margin: 0; }
+
+input.inp-text, textarea, input.choose, input.answer { border: 1px solid #efbd74; padding: 3px; }
+input.inp-text { width: 300px; margin: 0 0 8px 0; }
+textarea { width: 550px; height: 150px; margin: 0 0 12px 0; display: block; }
+
+input.choose { margin: 0 2px 0 0; }
+input.answer { width: 40px; margin: 0 0 0 10px; }
+.big input[type=submit] { clear:both; }
+.big input[type=radio]{
+	height : 16px;
+}
+.big input[type=text],.big  input[type=password],.big select { width:300px;  border: 1px solid #efbd74; margin : 2px; height:20px;}
+
+.big fieldset div {position:relative; overflow: auto;}
+
+form br { display: none; }
+
+fieldset fieldset{	
+	background-color: #fbeddf;
+	margin : 5px;
+}
+
+fieldset fieldset legend {
+	background-color: transparent;
+	border: none;
+	color:black;
+}
+#indikace_selector{
+    padding:2px;
+}
+#indikace_selector select {
+    width : 12em;
+}

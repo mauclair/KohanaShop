@@ -1,0 +1,524 @@
+/*   COLORS
+ 	ruzova :  #f2485c
+	hneda:   #a44906
+	kosik  :   #efbd74
+	lista_l :   #f1c684
+    menu_l:  #fbeddf
+*/
+
+div, span, ul, li, p,  table, small, strong, b{
+font-family: Tahooma, Verdana, Arial, Helvetica, sans-serif;
+}
+* {  line-height: 120%; }
+
+body {	  	 
+  margin: 0px;
+  padding : 0px;
+  background-image: url("../img4/body_back2.png");
+  background-repeat: repeat-y;
+  font-size : 10pt;
+}
+
+p {
+	 margin-left: 1em;
+	 max-width : 700px;
+         line-height:125%;
+         text-align:justify;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: Georgia,"Times New Roman";
+	color : #a44906;
+	margin : 5px;
+        margin-left : 15px;
+}
+
+h1 {	font-size : 175%;}
+h2 {	font-size : 150%;}
+h3 {	font-size : 125%;}
+h4 {	font-size : 110%;}
+
+a { 	color : #a44906; }
+a:hover {	color : #f2485c; }
+
+table {
+	 width : 99%;
+	 margin: auto;
+	 border-spacing : 2px;
+	 border-collapse: separate;
+}
+th {
+	  text-align: center;
+	  background-color:  #f1c684; 
+	  color : #f2485c;
+	  padding: 3px;
+	  font-size: 14px;
+	  vertical-align: middle;
+}
+td {
+			background-color: #fbeddf;			
+			padding: 3px; 
+	}
+
+ul {	  
+	  padding-left : 1em;
+	  margin : 0.5em;
+          margin-right : 0;
+}
+a img {
+	  border: none;
+	}
+
+
+/*--------------------			MAIN PAGE				------------------------*/
+
+
+#mainWrapper {	
+	 margin-top: 210px;
+	 padding: 0;
+}
+#header {
+	 width : 900px;
+	 height : 168px;	 
+	 background-repeat:no-repeat;
+	 background-image: url("../img4/sprited.png");
+         background-position: -10px -200px;
+	 position : absolute ;
+	 top : 0;
+	 left : 251px;	 
+}
+#header a {
+	display: block;
+	width : 800px;
+	height: 160px;
+}
+
+#headerLinks{
+    position:absolute;
+    left:251px;
+    height:24px;
+    width: 864px;
+    top:0px;    
+}
+#headerLinks a {
+    line-height: 24px;
+    margin-left:1em;
+    text-decoration:none;    
+}
+
+#content {
+	 height:1%;
+	margin-top : 210px;
+	/*margin-left : 260px;*/
+	margin-left : 5px; 
+	padding: 0;
+	overflow: auto;	
+	position:relative;
+}
+
+
+
+#footer {
+	  clear: both;
+	  text-align: right;
+	  font-size: 70%;
+	  background-color:  #fbeddf;
+	  margin-left : 251px;
+	  margin-top :20px;
+	}
+/*-------------------             MINICART                             -------------------- */
+#minicart {
+	width : 195px;
+	position : absolute;
+	top : 168px;
+	left : 11px;
+	height : 35px;
+	 background-image: url("../img4/sprited.png");
+         background-position: 0px -68px;
+	 padding-left : 45px;
+	 padding-top: 5px;	 	 
+}
+
+#minicart div, #minicart div a {
+	   font-size : 12px;
+	   color : #a44906;
+	   text-decoration: none;	   
+	}
+#minicart div a:hover {
+	color:#f2485c;
+}	
+
+/*-----------------				TOP MENU		--------------------------------	*/
+#topMenu {
+	 position : absolute;
+	 top  : 168px;
+	 left : 251px;
+	 background-image: url("../img4/topMenu2.png");
+	 /*background-repeat: no-repeat;*/
+	 background-color : #f1c684;  
+	 width: 100%;
+	 height : 40px; 
+}
+#topMenu ul {
+	   position : relative;
+	   top : 0px;
+	   width : 754px;	   
+	   margin : 0px;
+	   padding : 0px;
+	   padding-top :  13px;
+	   text-align: right;
+	}
+
+#topMenu ul li {	  
+	 display : inline;
+	 margin-left : 1em;
+	 color : #a44906;
+         
+}
+#topMenu ul li a {
+	   text-decoration : none;
+	}
+#topMenu ul li a.selected {
+	color : #f2485c;
+}	
+
+/*------------		QUICK & ADVANCED SEARCH		------------------------*/
+#quickSearch{
+	background-image:  url("../img4/sprited.png");
+        background-position: -10px -10px;
+	background-repeat: no-repeat;
+	width: 235px;
+	height: 48px;
+	position : absolute;
+	top : 0px;
+	left : 11px; 
+}
+#quickSearch input {
+	position : relative;
+	top  : 11px;
+	left : 53px;
+	width : 173px;
+	height: 20px;
+	border : none;
+}
+#advancedSearch {
+	width: 199px;
+	height: 15px;
+	position : absolute;
+	top : 40px;
+	left : 51px;
+	font-size : 13px;
+	text-align: center;
+}
+#advancedSearch a {
+	color : #f2485c;
+}
+
+/*---------------------			Left MENU				-------------------------------------------------*/
+#leftMenu {
+	 /*position : absolute;
+	 top : 210px;
+	 left : 51px;*/	 
+	 /*margin-left : 51px;*/
+	 float:left;
+	 width : 200px;
+	 padding-left : 51px;	 
+}
+#leftMenu h1,#leftMenu h2,#leftMenu h3, #leftMenu h4,#leftMenu h5{
+		color : #f2485c;
+	}
+#leftMenu strong{ color : #f2485c; Font-family:georgia; margin-left : 5px;}	
+#leftMenu a { text-decoration: none;}	
+ /*-------------------		Lang & Currency switcher			---------------------------*/
+ 
+ #currencySwitcher {
+    position : absolute;
+    left : 1000px;
+    top : 80px;
+    z-index: 11;
+ }
+ 
+  #languageSwitcher {
+    position : absolute;
+    left : 1000px;
+    top : 11px;
+    z-index: 10;
+ }
+ /*-------------------			DIRECT LOGIN   ------------------------------*/
+ #directLogin {
+    position:absolute;
+    top  : 60px;
+    left : 11px;
+    width : 235px;
+    height: 104px;      
+ }
+ 
+ #directLoginUsername {
+   position: relative;
+   background-image: url("../img4/sprited.png");
+   background-position: 0px -146px;
+   width : 235px;
+   height : 44px;
+   left : 1px;
+ }
+ #directLoginUsername input,  #directLoginPassword input {
+ 	position : relative;
+	top  : 11px;
+	left : 53px;
+	width : 173px;
+	height: 20px;
+	border : none;
+ }
+  #directLoginPassword {
+   position: relative;
+   background-image: url("../img4/sprited.png");
+   background-position: 0px -108px;
+   width : 235px;
+   height : 38px;
+   left : 1px;
+ }
+  #directLoginPassword input{ 	
+	top  : 5px;	
+ }
+ 
+ #directLoginSubmit {
+ 	  width : 235px;
+ 	  position: relative;
+ }
+ 
+ 
+ #directLoginSubmit input{
+    position : relative;
+    float : right;
+    border: none;
+    color: #a9520e;
+    background-color: #f2c785;
+    margin-right: 8px;
+ }
+ /*------------------			LOGGED INFO   ----------------------------------*/
+ #loggedInfo {
+    background-image: url("../img4/user_icon.png");
+    background-repeat: no-repeat;
+    position:absolute;
+    font-size:small;
+    top  : 60px;
+    left : 12px;
+    width : 189px;
+    padding-left : 49px;      
+    padding-top: 10px;  
+ }
+ 
+ #loggedInfoUsername{
+     font-size: 120%;
+     color : #f2485c;
+     font-weight: bold;
+ }
+ #loggedInfo a {
+   text-decoration: none;
+ }
+ 
+ /*----------------------		leftMenuBar   	---------------------------*/
+ #leftMenuBar {
+   position : absolute;
+   width : 51px;
+   top : 220px;
+   left : 0px;
+   border-bottom : 5px solid white;
+ }
+ #leftMenuBar a img , #leftMenuBar a {    
+    margin : 0px;
+    padding : 0px;
+    display: block;
+    height: 128px;
+    
+ }
+ 
+ #clanky{
+     text-align:justify;
+     padding-left: 1em;
+ }
+ #clanky  div {margin-left:1em;}
+ #clanky  p {margin-left : 1em;  margin-bottom:1em;  max-width: 40em;}
+ #clanky  ul, #clanky ol { margin-left:1em;  padding-left : 1em;  max-width:36em; list-style-type:disc;}
+ #clanky ol{
+    list-style-type:decimal;
+ }
+ #clanky div p img{ margin : 1em; }
+ 
+
+ 
+ /********************				CLASSES							*****************/
+ 
+ .productFullImage{
+   float : right;
+   margin: 1em;
+ }
+ 
+ .cena {
+  		text-align: right;
+ }
+ 
+ .menuWrapper ul{
+      margin : 0px;
+      padding : 0px;
+      padding-left : 1em;      
+ }
+ .menuWrapper ul li {
+    list-style: none;
+    padding-top: 1px;
+ }
+ .menuWrapper ul li ul li {
+    list-style: circle;
+ }
+ 
+ .requied, .requied td {   
+   color: #f2485c;
+   font-weight: bold; 	 
+ }
+ 
+ .right { text-align: right;}
+ .center { text-align: center;}
+ .controller  {        
+    text-align: center;
+    font-size: 10px;
+    max-width: 826px;;     
+ }
+ .controller form {display: inline;}
+ .controller form fieldset{display: inline; margin:0; padding:0;border:none;background-color: transparent;}
+ .controller input, .controller select {
+   font-size : 11px;
+   border: 1px solid #f1c684;
+    
+ }
+ .small,small {
+    font-size: smaller;
+ }
+ 
+ .price {
+   font-weight: bold;
+ }
+ 
+ .page_flipper {   
+   text-align: center;
+   font-size : 10px;
+   width : auto;
+   max-width : 826px;
+   clear:both;   
+ }
+ .page_flipper a {text-decoration: none;}
+ .page_flipper .selected {
+   color:   #f2485c;
+   font-size: 12px;
+   font-weight: bold;
+  }
+  
+  .clanky_control {
+    clear : both;
+    font-size: small;
+    width :auto;
+  }
+  
+  .googleAd{
+     text-align: center;
+     width:100%;
+  }
+  
+  .menulike li{
+     display:inline;      
+   }
+   
+   .clanek{
+   	 width:auto;
+     border : 1px solid #a44906; 
+     margin : 5px; 
+     padding : 1em;
+     max-width: 40em;
+     background-color: #fbeddf;
+     font-size: 12px;  
+   }
+   .clanek h2{
+   	
+   }
+   .clanek .info { margin-top : 1em; text-align : right;}
+   .ruzova{color:#f2485c;}
+ #content li {margin-left : 1em; margin-bottom:1em; }
+ #content table li{ margin : 0; font-size: small;} 
+ 
+ #indexTable {
+ 	width:auto;
+ }
+ 
+ #indexTable .cell{ width:32%; background-color: transparent;}
+ 
+ .clanek legend { width : 100%;}
+ 
+ del { color : #f00; }
+ 
+.cartTable {
+   margin : 0;
+   width : 650px;
+ }
+
+ #categoryBrowser{
+     margin-left : 15px;
+     font-size : small;
+ }
+
+ #categoryBrowserChildren{
+     padding-left : 15px;
+     font-size:smaller;
+ }
+
+ #indikaceBox, #vendorBox {
+     height:100px;
+     overflow:auto; 
+ }
+
+ .even {
+     background-color: #fff;
+ }
+ 
+ .bold { font-weight : bold;}
+
+ #product_comments{
+     clear:both;     
+ }
+
+ .commentItem{
+     max-width:700px;     
+     border:1px solid   #efbd74;
+     margin : 1em;
+ }
+
+ .commentItem p{
+    margin-bottom: 1em;
+ }
+
+ .commentItem h3{
+     background-color:#eee;
+     color: #f2485c;
+     margin:10px;
+ }
+
+ .comment_date{     
+     font-size:smaller;
+     float:right;
+     margin:15px;
+ }
+
+ button {margin-left : 1em;}
+
+ .indikace_list{
+     max-width : 450px;
+     overflow:auto;
+     clear:both;
+ }
+ .indikace_list li{
+     width:30%;
+     float:left;
+ }
+
+
+
+
+

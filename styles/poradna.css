@@ -1,0 +1,36 @@
+.poradna {
+		padding : 1em;
+}
+
+.poradna h3 {
+	 background-color: #f1c684;
+	 padding : 5px; 
+	 padding-left : 10px;
+}
+.poradna h3 a {text-decoration: none;}
+.poradna .read {
+	  font-size: small;
+	  text-align: right;
+	}
+.poradna .poradna_info {
+  font-size: x-small;
+  float: right;
+  margin-right: 5px;
+  background-color: #fbeddf;
+  padding : 2px;
+  border: 2px solid #f1c684;
+}
+
+.poradna .poradnaItem {
+	margin : 2em;
+	background-color: #fbeddf;
+	max-width: 40em;
+}
+
+.poradna .poradna_controls {
+	  font-size: small;
+}
+
+.reply {
+	margin-left: 20px; 
+}
