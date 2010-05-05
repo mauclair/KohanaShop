@@ -4,7 +4,7 @@
  * then a full URL will be used, eg: http://localhost/kohana/. If it only includes
  * the path, and a site_protocol is specified, the domain will be auto-detected.
  */
-$config['site_domain'] = '192.168.1.6/kohanashop/';
+$config['site_domain'] = 'kshop/';
 
 /**
  * Force a default protocol to be used by the site. If no site_protocol is
@@ -82,7 +82,7 @@ $config['enable_hooks'] = FALSE;
  *  3 - Notices
  *  4 - Debugging
  */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 1;
 
 /**
  * Message logging directory.
@@ -116,7 +116,7 @@ $config['extension_prefix'] = 'MY_';
  */
 $config['modules'] = array
 (
-        
+         MODPATH.'user',      // Authentication
 	// MODPATH.'auth',      // Authentication
 	// MODPATH.'kodoc',     // Self-generating documentation
 	// MODPATH.'gmaps',     // Google Maps integration

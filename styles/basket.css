@@ -1,75 +1,57 @@
-#content ul.basket-control {
-	position:relative;
-	overflow: auto;	
-	text-align: center;	
-	padding:0;
-	margin: 0;
+.pokladna-progress {
+    position:relative;
+    overflow: auto;
+    padding:0;
+    margin: 0;
+}
+
+.pokladna-progress > div {
+    width : 20%;
+    margin : 0;
+
+    float : left;
+    position:relative;
+    overflow: auto;
+    
+    font-size : 9pt;   
+    vertical-align: middle;       
+    color : #888;
+    margin-right: 0px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #ddd;
+
+}
+
+.pokladna-progress .active {
+
+    color : #000;
+    background-color: #f27886;
+}
+
+.pokladna-progress .current {
+    color : #fff;
+    background-color: #F2485C;
 }
 
 
-.basket-control-wrapper{
-	/*background-color: #7e7e7e;*/
-	padding: 0px;	
-	margin-bottom: 5px;
-	
+.pokladna-progress a {
+    color : #000;
+    padding:23px 0 0 10px;
+    float: left;
 }
 
-#content .basket-control li {
-	font-size : 8pt;
-	display:block;
-	float: left;
-	width : 150px;	
-	background-color: #F1C684;
-	margin: 0;
-	color : #A44906;
-	margin-right: 0px;
-	text-align: center;
-	vertical-align: middle;
-	padding:5px;	
-}
-
-#content .basket-control li.arrow {
-	
-	color : #ececec;
-	width : 23px;
-	padding : 0;
-	padding-top:5px;
-	padding-bottom:5px;
-	margin-left: 3px;		
-	
-	
-		
-}
-
-#content .basket-control li.active {
-	background-color: #A44906;	
-	color : #fff;
-}
-
-#content .basket-control li.next {	 
-	/* background-color: #41b0dd;*/
-}
-
-#content .basket-control li.hotovo {	 
-	background-color: #A44906;
-	color : #fff;
+.pokladna-progress .current a:hover,.pokladna-progress .active a:hover {
+    color : #fff;
 }
 
 
 
-
-
-#content .basket-control li a {	
-	display: block;
-	width: 150px;	
-	
+.pokladna-progress strong {
+    display:block;
+    float:left;
+    font-size:36px;
+    height:53px;
+    padding:7px 0 0 5px;
+    width:30px;
 }
-#content .basket-control li.active a , #content .basket-control li.hotovo a {
-	color: #fff;
-}
-
-.basket-control li a:hover {
-	background-color: #F1C684;
-	text-decoration: none;
-}
-	

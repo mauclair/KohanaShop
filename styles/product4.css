@@ -173,7 +173,6 @@ productTable td{
 }
 
 #productInfo table td.title{
-
     color: #a44906;
     font-weight: bold;
     background-color: #efbd74;
@@ -207,10 +206,7 @@ productTable td{
     color: white;
     text-align: left;
     padding-left : 1em;
-
-
     /*color: #f2485c;
-
 	 background-color:  #EEE;/*#ebddcf;*/
     border: 1px solid  #EFBD74;
     height : 3em;
@@ -229,6 +225,8 @@ productTable td{
 #productInfoTable{
     width:400px;
     margin : 15px;
+    margin-left: 0;
+
 }
 
 .mostlySoldProductTable{
@@ -257,3 +255,6 @@ productTable td{
     text-align:right;
 }
 
+.prize-form input{
+    width : 2em;
+}

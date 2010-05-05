@@ -1,13 +1,28 @@
-<?php if ($_SESSION['auth']["user_id"]) {?>
+<?php
+    if (is::logged()) {
+    $u = Session::instance()->get('user');
+?>
 <div id="loggedInfo">
-   <div id="loggedInfoUsername"><?=$_SESSION['auth']["first_name"] ?> <?=$_SESSION['auth']["last_name"] ?> </div>
-   <div id="loggedInfoShopperGroup"><?=($_SESSION['auth']['shopperGroup']=='Velkoobchod') ? $_SESSION['auth']['shopperGroup']:'' ?></div>
-   <div id="loggedInfoLogout"><a  href="<?$sess->purl(URL . "?page=$modulename/index&amp;func=userLogout");?>"><?= $logout_title ?></a></div>
-   <div id="loggedInfoMyAccount"><a href="<?php $sess->purl(SECUREURL . "?page=account/index");?>"><?= $account_title ?></a></div>
- <? if ($perm->check("admin,storeadmin,demo")) { ?>
-    <div id="loggedInfoAdministration"> <a   href="<?php $sess->purl(SECUREURL . "?page=product/index"); ?>"><?= $langd["user_administration"];?></a></div>
+   <div id="loggedInfoUsername"><?=$u['name']?></div>
+   <div id="loggedInfoShopperGroup"><?=($u['shopper_group_name']=='Velkoobchod') ? $u['shopper_group_name']:'' ?></div>
+   <div id="loggedInfoLogout"><a  href="<?= url::site('user/logout')?>"><?= Kohana::lang('user.logout')?></a></div>
+   <div id="loggedInfoMyAccount"><a href="<?= url::site('ucet')?>"><?= Kohana::lang('user.account')?></a></div>
+ <? if ( User_Model::isAdmin()){ ?>
+   <div id="loggedInfoAdministration"> <a   href="<?= url::site('admininstrace')?>"><?= Kohana::lang('admin.title')?></a></div>
  <?} ?>
 </div>
-  <?} ?>
+  <?} else {?>
+<form id="upLogin" method="post" action="<?= url::site('uzivatel/login')?>">
+    <div id="directLogin">
+        <div>
+            <input type="hidden" value="" name="page">
+            <input type="hidden" value="userLogin" name="func">
+        </div>
+        <div id="directLoginUsername"><input type="text" size="16" maxlength="32" name="username"></div>
+        <div id="directLoginPassword"><input type="password" size="16" maxlength="32" name="password"></div>
+        <div id="directLoginSubmit"><input type="submit" value="Přihlásit" name="Login"></div>
+    </div>
+</form>
+<?  }?>
 
 

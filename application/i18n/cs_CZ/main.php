@@ -1,12 +1,17 @@
 <?php
  $lang = array(
        'update' => 'Upravit',
+       'home' => 'Domů',
+       'home-img' => '<img src="img/home_16.png" title="Domů" alt="Domů" /><small>Domů</small>',
        'add' => 'Přidat',
        'show' => 'Ukázat',
+       'browse' => 'Procházet',
        'rescan'=>'Proskenovat',
        'edit'=>'Upravit',
        'search'=>'Hledat',
        'size'=>'roz.:',
+       'save' => 'Uložit',
+       'preview'=>'Náhled',
        'dir_count'=>'Adresářů',
        'img_count'=>'Obrázků',
        'vid_count'=>'Videí',
@@ -19,6 +24,14 @@
        'toggle-controls-off' => 'Zakázat editaci',
        'navigation' => 'Rozcestí',
        'advertisement' => 'Reklama',
+       'delete_confirm' => 'Opravdu smazat?',
+        'reload' => 'Reload',
+        'go' => 'Najít',
+        'register'=>'Registrovat',
+        'success' => 'Akce se zdařila',
+        'failed' => 'Akce se nezdařila',
+        'filter' => 'Omezit',
+        'administer' => 'Administrace',
 
    );
 

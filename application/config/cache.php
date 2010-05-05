@@ -27,6 +27,6 @@ $config['default'] = array
 (
 	'driver'   => 'file',
 	'params'   => DOCROOT.'cache',
-	'lifetime' => 1,
+	'lifetime' => 0,
 	'requests' => 1000
 );

@@ -4,8 +4,9 @@
 
 .poradna h3 {
 	 background-color: #f1c684;
-	 padding : 5px; 
-	 padding-left : 10px;
+	 padding : 5px;
+         margin : 0;
+	 
 }
 .poradna h3 a {text-decoration: none;}
 .poradna .read {
@@ -14,21 +15,53 @@
 	}
 .poradna .poradna_info {
   font-size: x-small;
-  float: right;
-  margin-right: 5px;
+  position: absolute;
+  /*top : -15px;*/
+  bottom : 0px;
+  right : 0px;  
   background-color: #fbeddf;
   padding : 2px;
   border: 2px solid #f1c684;
 }
 
-.poradna .poradnaItem {
-	margin : 2em;
+.poradna .poradna_item {
+	margin-bottom : 10px;
 	background-color: #fbeddf;
 	max-width: 40em;
+        padding : 0;
+        position: relative;
+        
+}
+
+.poradna_item p {
+    margin:  1em;
+
 }
 
 .poradna .poradna_controls {
 	  font-size: small;
+}
+
+.poradna_controls {
+    margin-top : 5px;
+}
+
+.poradna_controls a {
+    display: inline-block;
+    padding : 2px;
+    color : #A44906;
+    background-color:  #F1C684;
+    text-decoration: none;
+    font-size : 10px;
+}
+
+.poradna_controls a:hover {
+   color: #F1C684;
+   background-color:  #A44906;
+}
+
+.poradna .current {
+    border : 1px solid #A44906;
 }
 
 .reply {

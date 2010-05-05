@@ -14,12 +14,18 @@ ob_start();
 
   include('reset.css');
   include('basket.css');
-  include('product4.css');
   include('forms.css');
+  include('product4.css');
+  include('left_menu.css');
+  
+  include('classes.css');
   include('poradna.css');
   include('bylinky.css');
   include('caj.css');
+  include('tabs.css');
+  
  $c = ob_get_clean();
+  
  echo cssmin::minify($c);
  
 

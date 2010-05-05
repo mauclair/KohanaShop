@@ -14,4 +14,4 @@ $config['language'] = array('cs_CZ', 'Češťina');
  * Locale timezone. Defaults to use the server timezone.
  * @see http://php.net/timezones
  */
-$config['timezone'] = '';
+$config['timezone'] = 'Europe/Prague';

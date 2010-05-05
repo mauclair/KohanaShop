@@ -1,18 +1,14 @@
 <div class="menuWrapper">
     <strong> <?= Kohana::lang('main.navigation') ?> </strong>
     <ul>
-        <?if (is::logged()) :?>
-        <li><a href="<?= url::site('account')?>"   ><?= Kohana::lang('user.account') ?></a></li>
-        <?endif;?>
-        <li>
-<? if (is::logged()) : ?>
-            <a href="<?= url::site('user/logout')?>"><?= Kohana::lang('user.logout')?></a>
+<?if (is::logged()) :?>
+        <li><a <?= is::href('account')?>><?= Kohana::lang('user.account') ?></a></li>
+        <li><a href="<?= url::site('user/logout')?>"><?= Kohana::lang('user.logout')?></a></li>
 <? else : ?>
-            <a  href="<?= url::site('user/register') ?>"><?= Kohana::lang('user.register')?></a>
-<?endif;?>
-        </li>        
-        <li><a href="<?= url::site('basket')?>"><?= Kohana::lang('pokladna.title')?></a></li>                
-        <li><a href="<?= url::site('shop/caj')?>"><?= Kohana::lang('shop.caj')?></a></li>
+        <li><a <?= is::href('uzivatel/registrovat') ?>><?= Kohana::lang('user.register')?></a></li>
+<?endif;?>        
+        <li><a <?= is::href('basket')?>><?= Kohana::lang('pokladna.title')?></a></li>
+        <li><a <?= is::href('shop/caj')?>><?= Kohana::lang('shop.caj')?></a></li>
     </ul>
 </div>
 <br />

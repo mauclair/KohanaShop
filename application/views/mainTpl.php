@@ -31,7 +31,7 @@
         <script type="text/javascript">
             // Load jQuery
               google.load("jquery", "1");
-              google.load("jqueryui", "1");
+//              google.load("jqueryui", "1");
         </script>
 
 
@@ -44,6 +44,7 @@
             <div id="mainCenter" >
                 <div id="leftMenu" > <?= $leftMenu ?></div>
                 <div id="content">
+                    <?= View::factory('errors')->set('errors',Session::instance()->get_once('errors',array())) ?>
                     <?= $content ?>
                 </div>
 
@@ -64,10 +65,9 @@
             <div><?= date('Y',time())?> &copy; bylinářství.cz</div>
             <a href="http://www.toplist.cz/" target="_top"><img src="http://toplist.cz/count.asp?id=949419&amp;logo=btn" border="0" alt="TOPlist" width="80" height="15"/></a>
 
-            <script type="text/javascript">var addthis_pub="4a08501c6a75f26c";</script>
-            <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script><!-- AddThis Button END -->
-            <div class="center" >
-            </div>
+           <?/*<script type="text/javascript">var addthis_pub="4a08501c6a75f26c";</script>
+            <a href="http://www.addthis.com/bookmark.php?v=20" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/200/addthis_widget.js"></script><!-- AddThis Button END -->*/?>
+            <div class="center" ></div>
         </div>
         <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -78,5 +78,7 @@
             pageTracker._initData();
             pageTracker._trackPageview();
         </script>
+
+        
     </body>
 </html>

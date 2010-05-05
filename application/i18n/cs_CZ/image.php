@@ -8,5 +8,8 @@
         'encode-pictures' => 'Zakódovat obrázky',
         'decode-pictures' => 'Dekódovat obrázky',
         'watermark-pictures' => 'Watermark na obrázky',
+        'l-thumb' => 'Levý náhled',
+        'r-thumb' => 'Pravý náhled',
+        'store-positions' => 'Uložit seřazení obrázků',
     );
 ?>

@@ -20,17 +20,18 @@ body {
 }
 
 p {
-	 margin-left: 1em;
+	 
 	 max-width : 700px;
          line-height:125%;
          text-align:justify;
+         margin-bottom:  15px;
 }
 
 h1,h2,h3,h4,h5,h6 {
 	font-family: Georgia,"Times New Roman";
 	color : #a44906;
-	margin : 5px;
-        margin-left : 15px;
+	margin-bottom : 10px;
+        
 }
 
 h1 {	font-size : 175%;}
@@ -110,7 +111,8 @@ a img {
 	 height:1%;
 	margin-top : 210px;
 	/*margin-left : 260px;*/
-	margin-left : 5px; 
+        max-width: 800px;
+	
 	padding: 0;
 	overflow: auto;	
 	position:relative;
@@ -215,20 +217,7 @@ a img {
 }
 
 /*---------------------			Left MENU				-------------------------------------------------*/
-#leftMenu {
-	 /*position : absolute;
-	 top : 210px;
-	 left : 51px;*/	 
-	 /*margin-left : 51px;*/
-	 float:left;
-	 width : 200px;
-	 padding-left : 51px;	 
-}
-#leftMenu h1,#leftMenu h2,#leftMenu h3, #leftMenu h4,#leftMenu h5{
-		color : #f2485c;
-	}
-#leftMenu strong{ color : #f2485c; Font-family:georgia; margin-left : 5px;}	
-#leftMenu a { text-decoration: none;}	
+
  /*-------------------		Lang & Currency switcher			---------------------------*/
  
  #currencySwitcher {
@@ -358,31 +347,14 @@ a img {
   		text-align: right;
  }
  
- .menuWrapper ul{
-      margin : 0px;
-      padding : 0px;
-      padding-left : 1em;      
- }
- .menuWrapper ul li {
-    list-style: none;
-    padding-top: 1px;
- }
- .menuWrapper ul li ul li {
-    list-style: circle;
- }
  
- .requied, .requied td {   
+ 
+ .required, .required td {
    color: #f2485c;
    font-weight: bold; 	 
  }
  
- .right { text-align: right;}
- .center { text-align: center;}
- .controller  {        
-    text-align: center;
-    font-size: 10px;
-    max-width: 826px;;     
- }
+ 
  .controller form {display: inline;}
  .controller form fieldset{display: inline; margin:0; padding:0;border:none;background-color: transparent;}
  .controller input, .controller select {
@@ -390,9 +362,7 @@ a img {
    border: 1px solid #f1c684;
     
  }
- .small,small {
-    font-size: smaller;
- }
+
  
  .price {
    font-weight: bold;
@@ -440,9 +410,7 @@ a img {
    	
    }
    .clanek .info { margin-top : 1em; text-align : right;}
-   .ruzova{color:#f2485c;}
- #content li {margin-left : 1em; margin-bottom:1em; }
- #content table li{ margin : 0; font-size: small;} 
+   .ruzova{color:#f2485c;} 
  
  #indexTable {
  	width:auto;
@@ -474,11 +442,7 @@ a img {
      overflow:auto; 
  }
 
- .even {
-     background-color: #fff;
- }
- 
- .bold { font-weight : bold;}
+
 
  #product_comments{
      clear:both;     
@@ -519,6 +483,4 @@ a img {
  }
 
 
-
-
-
+ 

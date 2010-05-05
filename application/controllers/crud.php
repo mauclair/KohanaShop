@@ -20,7 +20,7 @@ class Crud_Controller extends Template_Controller {
     }
 
     public function add(){
-        $this->model->add($this->input->post());
+        $id = $this->model->add($this->input->post());
         url::redirect($this->redirect_to);
     }
 

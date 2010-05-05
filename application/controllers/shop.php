@@ -14,7 +14,10 @@ class Shop_Controller extends My_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->template->categories = View::factory('layout/category_list')->set('categories',cacheControl::categories())->render();
+        $gid = $this->session->get('user.shopper_group_id');
+        $this->template->categories = View::factory('layout/category_list')->set('categories',cacheControl::categories($gid))->render();
+        $this->template->leftMenu = View::factory('layout/left_menu')->set('categories',$this->template->categories)->render();
+
     }
     public function index(){
 

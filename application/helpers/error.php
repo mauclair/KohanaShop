@@ -11,6 +11,18 @@
 				error_Core::add($k.'=>'.$v);
 			}
 	 	}
+
+                public static function get($delete=true){
+                    $e = Session::instance()->get('errors',array());
+                    if($delete)Session::instance()->delete('errors');
+                    return $e;
+                }
+
+                public static function render(){
+                    $e = self::get();
+                    if(!$e) return '';
+                    return View::factory('errors')->set('errors',$e)->render();
+                }
   }
 
 ?>

@@ -1,9 +1,16 @@
 <?
     $dir = './img4/'.str_replace('_', '', $_SESSION['lang']).'/';
     
-    $shop_link = $dir.'on/shop.png';
-    $articles_link = $dir.'on/articles.png';
-    $qa_link = $dir.'on/qa.png';
+    $controller = URI_Core::instance()->rsegment(1);
+
+
+    $shop_link = $dir.((in_array($controller, array('shop','produkt','produkty','indikace','vyrobce','kategorie')))? 'on': 'off').'/shop.png';
+    $articles_link = $dir.((in_array($controller, array('clanky')))? 'on': 'off').'/articles.png';
+    $qa_link = $dir.((in_array($controller, array('poradna')))? 'on': 'off').'/qa.png';
+
+    
+    
+
 ?>
 <div id="leftMenuBar">
     <a href="<?=url::site('shop')?>" title="<?= Kohana::lang('shop.title')?>">
