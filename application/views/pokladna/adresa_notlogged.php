@@ -12,8 +12,8 @@
 <script type="text/javascript">
     var api;
 
-    $(function(){
-        api = $('.tabs3').tabs('#pane',{effect: 'ajax',api:true});
+    $(function(){        
+        api = $('.tabs3').tabs('#pane',{effect: 'ajax',api:true,initialIndex:<?=$initialIndex?>});
         api.onClick(function(event,index){
             if(index==1) { //
                 $('#Register').validate();

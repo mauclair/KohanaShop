@@ -48,7 +48,9 @@ class Pokladna_Controller extends Shop_Controller {
             $uinfo->where('user_id', $u['user_id']);
             $c->set('addresses',$uinfo->fetch())->set('billing_address',$this->session->get('user'))->set($u);
         } else {
-            $c = View::factory('pokladna/adresa_notlogged');
+            $initialIndex = ($this->session->get('pokladna.shipping'))? 2 : 0;
+            $c = View::factory('pokladna/adresa_notlogged')
+               ->set('initialIndex',$initialIndex);
             $this->session->set('go-after-login','pokladna/adresa');
 
         }
@@ -58,7 +60,7 @@ class Pokladna_Controller extends Shop_Controller {
 
     public function bezRegistrace() {
         $this->content->progress = '';
-        $ca = Uzivatel_Controller::$clean_user;
+        $ca = $this->session->get('pokladna.billing',Uzivatel_Controller::$clean_user);
         $this->content->content =  View::factory('pokladna/adresa')->set($ca)->set('billing_address',$ca)->set('addresses',array());
     }
 
@@ -75,21 +77,60 @@ class Pokladna_Controller extends Shop_Controller {
     }
 
     public function ulozAdresy() {
-        $v = new Validation($_POST);
-        $v->add_rules($field, $rules);
 
-        url::redirect('pokladna/rekapitulace');
+        $fields = $this->input->post();
+        $billing= array();
+        $shipping = array();
+
+        foreach($fields as $k=>$v) {
+            if(strpos($k, 'shipping_')===false) {
+                $billing[$k] = $v;
+            } else {
+                $k = str_replace('shipping_', '', $k);
+                $shipping[$k] = $v;
+            }
+        }
+
+        $required = array('address_1','city','zip','name');
+
+
+        $validation_shipping = new Validation($shipping);
+        $validation_billing = new Validation($billing);
+        foreach($required as $v) {
+            $validation_billing->add_rules($v, 'required');
+            if($shipping) $validation_shipping->add_rules($v, 'required');
+        }
+
+        $pokladna = $this->session->get('pokladna',array());
+        if($shipping) $pokladna['shipping'] = $shipping; //else unset($pokladna['shipping']);
+        $pokladna['billing'] = $billing;
+        $this->session->set('pokladna',$pokladna);
+
+        $validation_billing->add_rules('email', 'valid::email','required');
+        $validation_billing->add_rules('phone_1', 'numeric','required');
+
+
+        if($validation_billing->validate() && (count($shipping)==0  || $validation_shipping->validate())) {
+            url::redirect('pokladna/rekapitulace');
+        } else {
+            error::add(Kohana::lang('pokladna.address-not-valid'));
+            error::parseValidation($validation_billing->errors());
+            error::parseValidation($validation_shipping->errors());
+            url::redirect('pokladna/adresa');
+        }
+
+
 
     }
 
-    public function shipAddressForm(){
+    public function shipAddressForm() {
         $id = (int)$this->input->post('user_info_id',-1);
         if($id<0) {
             $this->content->content = '';
             $this->content->progress = '';
             return;
         }
-        $data = Uzivatel_Controller::$clean_user;
+        $data = $this->session->get('pokladna.shipping',Uzivatel_Controller::$clean_user);
         if($id>0 ) { // load
             $uim = new User_info_Model();
             $data = $uim->get($id);

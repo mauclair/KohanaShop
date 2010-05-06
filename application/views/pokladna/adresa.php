@@ -22,7 +22,7 @@
             foreach($addresses as $a) {
                 $adresses[$a->user_info_id] = $a->name;
             }?>
-            <?= form::dropdown('shipping_address_selector',$adresses)?>
+            <?= form::dropdown('address_selector',$adresses)?>
             <div id="shipping_address_container">
             </div>
         </div>
@@ -37,7 +37,7 @@
 
 <script type="text/javascript">
     $(function(){
-        $('#shipping_address_selector').change(function(){
+        $('#address_selector').change(function(){
             $('#shipping_address_container').load('pokladna/shipAddressForm', {user_info_id : $(this).val()});
         });
     });
