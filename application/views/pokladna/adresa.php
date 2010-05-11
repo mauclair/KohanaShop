@@ -22,8 +22,9 @@
             foreach($addresses as $a) {
                 $adresses[$a->user_info_id] = $a->name;
             }?>
-            <?= form::dropdown('address_selector',$adresses)?>
+            <?= form::dropdown('address_selector',$adresses,$shipping_address_id)?>
             <div id="shipping_address_container">
+                <?= $shipping_address?>
             </div>
         </div>
 
