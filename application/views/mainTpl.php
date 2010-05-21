@@ -27,12 +27,8 @@
         <meta http-equiv="Content-Style-Type" content="text/css" />
         <meta http-equiv="Content-Script-Type" content="text/javascript" />
         <link rel="shortcut icon" href="img/favicon.ico" />
-        <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-        <script type="text/javascript">
-            // Load jQuery
-              google.load("jquery", "1");
-//              google.load("jqueryui", "1");
-        </script>
+        <script src="http://cdn.jquerytools.org/1.2.2/full/jquery.tools.min.js" type="text/javascript"></script>
+        
 
 
     </head>

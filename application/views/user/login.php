@@ -20,9 +20,7 @@
 </div>
 
 
-<script type="text/javascript" src="./scripts/jquery.tools.min.js"></script>
-<script type="text/javascript" src="./scripts/jquery.validate.min.js"></script>
-<script type="text/javascript" src="./scripts/localization/messages_cs.js"></script>
+
 <script type="text/javascript">
     $(function(){
         $("#tabs").tabs("#panes > form");

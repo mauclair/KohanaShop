@@ -126,5 +126,10 @@ class Uzivatel_Controller extends Shop_Controller {
         }
         $this->template->content = View::factory('pokladna/address_form')->set($data);
     }
+
+    public function logout(){        
+        $this->session->delete('user');
+        url::redirect('/');
+    }
 }
 ?>

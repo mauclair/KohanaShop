@@ -8,6 +8,8 @@
  * Description of crud
  *
  * @author snoblucha
+ * @property Session $session
+ * @property object $model
  */
 class Crud_Controller extends Template_Controller {
     public $model;

@@ -2,8 +2,8 @@
     <strong> <?= Kohana::lang('main.navigation') ?> </strong>
     <ul>
 <?if (is::logged()) :?>
-        <li><a <?= is::href('account')?>><?= Kohana::lang('user.account') ?></a></li>
-        <li><a href="<?= url::site('user/logout')?>"><?= Kohana::lang('user.logout')?></a></li>
+        <li><a <?= is::href('ucet','ucet/*')?>><?= Kohana::lang('user.account') ?></a></li>
+        <li><a href="<?= url::site('uzivatel/logout')?>"><?= Kohana::lang('user.logout')?></a></li>
 <? else : ?>
         <li><a <?= is::href('uzivatel/registrovat') ?>><?= Kohana::lang('user.register')?></a></li>
 <?endif;?>        

@@ -5,8 +5,8 @@
 <div id="loggedInfo">
    <div id="loggedInfoUsername"><?=$u['name']?></div>
    <div id="loggedInfoShopperGroup"><?=($u['shopper_group_name']=='Velkoobchod') ? $u['shopper_group_name']:'' ?></div>
-   <div id="loggedInfoLogout"><a  href="<?= url::site('user/logout')?>"><?= Kohana::lang('user.logout')?></a></div>
-   <div id="loggedInfoMyAccount"><a href="<?= url::site('ucet')?>"><?= Kohana::lang('user.account')?></a></div>
+   <div id="loggedInfoLogout"><a  href="<?= url::site('uzivatel/logout')?>"><?= Kohana::lang('user.logout')?></a></div>
+   <div id="loggedInfoMyAccount"><a <?= is::href('ucet', array('ucet/*'))?>><?= Kohana::lang('user.account')?></a></div>
  <? if ( User_Model::isAdmin()){ ?>
    <div id="loggedInfoAdministration"> <a   href="<?= url::site('admininstrace')?>"><?= Kohana::lang('admin.title')?></a></div>
  <?} ?>

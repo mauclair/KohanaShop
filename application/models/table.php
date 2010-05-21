@@ -575,7 +575,7 @@ class Table_Model extends Model {
     }
     /**
      *Returns the selected data *
-     * @return DBQuery object
+     * @return Database_Result
      */
     public function fetch() {
         return  $this->db->query($this->getQuery());

@@ -32,7 +32,7 @@ class My_Controller extends Crud_Controller {
         if(!perms::allowed()) {
             if(User_Model::isLogged()) 
                 url::redirect('user/no_perms');
-            else  url::redirect('user/login');
+            else  url::redirect('uzivatel/prihlasit');
         }
         //  $this->_prepare_articles();
        // $this->_prepare_banners();

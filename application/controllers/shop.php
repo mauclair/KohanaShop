@@ -8,8 +8,8 @@
  * Description of shop
  *
  * @author snoblucha
+ * @property Session $session
  */
-
 class Shop_Controller extends My_Controller {    
     
     public function __construct() {

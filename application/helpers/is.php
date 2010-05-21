@@ -42,6 +42,7 @@ class is_Core {
     }
 
     public static function href($url,$anotherMatches = array()){
+        if(!is_array($anotherMatches)) $anotherMatches = array($anotherMatches);
         $res = ' href="'.url::site($url).'"'.self::current($url,true,$anotherMatches);
         return $res;
     }

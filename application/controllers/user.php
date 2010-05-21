@@ -1,5 +1,5 @@
 <?php
-/* 
+/*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -9,7 +9,7 @@
  *
  * @author snoblucha
  */
-class User_Controller extends My_Controller {
+class User_Controller extends Shop_Controller {
     public function __construct() {
         parent::__construct();
         $this->model = new User_Model();
@@ -17,16 +17,11 @@ class User_Controller extends My_Controller {
     }
 
     public function index(){
-        
+
     }
 
     public function login(){
-        if($this->model->try_login('snb',md5('snb'))){            
-            $this->template->content = Kohana::debug($_SESSION['user']);
-        } else {
-            error::add(Kohana::lang('user.lofing-failed'));            
-        }
-        url::redirect($this->session->get('last_page'));
+        $this->template->content = View::factory('user/login');
     }
 
     public function logout(){

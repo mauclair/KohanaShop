@@ -9,19 +9,14 @@
  *
  * @author snoblucha
  */
-class Admin_Controller extends My_Controller {
-    public $iTemplate;
+class Admin_Controller extends My_Controller {    
+    public $template = 'admin/template';
     public function __construct() {
         parent::__construct();
-        $logged = User_Model::isLogged();
-        $this->iTemplate = View::factory('admin/template');
-        $this->iTemplate->content = '';
+        $logged = User_Model::isLogged();                
     }
 
-    public function _render(){
-        $this->template->content = $this->iTemplate->render();
-        parent::_render();
-    }
+    
 
     public function index(){
         $this->userList();
