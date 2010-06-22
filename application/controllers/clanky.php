@@ -33,16 +33,7 @@ class Clanky_Controller extends Shop_Controller {
 
     public function updateUrls(){
         $this->model->updateUrls();
-    }
-    public function texyToHtml(){
-        $cls = $this->model->fetch();
-        $t = new  Texy();
-        foreach( $cls as $clanek){
-            $clanek = (array)$clanek;
-            $clanek['body'] = $t->process($clanek['body']);
-            $this->model->update($clanek);
-        }
-    }
+    }  
 
     public function convertToHtml(){
         $c = $this->model->convertAllToHtml();

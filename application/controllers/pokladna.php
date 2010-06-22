@@ -78,15 +78,36 @@ class Pokladna_Controller extends Shop_Controller {
     }
 
     public function rekapitulace() {
+        if(!$this->session->get('pokladna')) url::redirect('pokladna');
         $this->content->progress->pos = 4;
-        $this->content->content = 'TODO> REAKPITULACE';
-        //todo: zobrazit vybran0 polozky
+        
+        $basketModel = new Basket_Model();
+        $shippingModel = new Shipping_Model();
+        $shipType = $shippingModel->get($this->session->get('pokladna.doprava.shipping_id'));
+        
+
+
+        $basket = View::factory('basket/readOnly')->set('data',$basketModel->get())->set('sums',$basketModel->getSums());
+        $billing = View::factory('pokladna/addressReadOnly')->set($this->session->get('pokladna.billing'))->render();
+        $shaddr = $this->session->get('pokladna.shipping');
+        $shipping = ($shaddr && $this->session->get('pokladna.address_selector')>=0)  ? View::factory('pokladna/addressReadOnly')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
+        $this->content->content =  View::factory('pokladna/rekapitulace')
+                ->set('basket',$basket->render())
+                        ->set('billing_address',$billing)
+                        ->set('shipping',$shipType)
+                        ->set('sums',$basketModel->getSums())
+                        ->set('shipping_address',$shipping);
+        
     }
 
 
 
     public function dokonceni() {
         //todo: ulozit objednavku,
+        //uloz do databaze
+        //odesli email
+        //presmeruj na podekovani
+        
     }
 
     public function ulozAdresy() {

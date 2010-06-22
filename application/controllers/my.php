@@ -27,7 +27,7 @@ class My_Controller extends Crud_Controller {
 
         $this->session = Session::instance();
         $this->_init_language();
-        $this->_find_location();
+        //$this->_find_location();
 
         if(!perms::allowed()) {
             if(User_Model::isLogged()) 
@@ -124,7 +124,7 @@ class My_Controller extends Crud_Controller {
         $this->template->banners = View::factory('banners')->set('banners',$b->getBanners())->render();
     }
 
-    public function _find_location() {
+   private function _find_location() {
         $iploc = $this->session->get('ipLoc');        
         if(!$iploc) {
             if(strpos($_SERVER['REMOTE_ADDR'], '192.168.1')!==false ) $_SERVER['REMOTE_ADDR'] = '';
@@ -132,9 +132,7 @@ class My_Controller extends Crud_Controller {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             $res =  curl_exec($ch);             
-            if($res)  $this->session->set('ipLoc',json_decode($res)); 
-             
-
+            if($res)  $this->session->set('ipLoc',json_decode($res));           
         }
     }
 

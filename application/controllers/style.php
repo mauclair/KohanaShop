@@ -13,7 +13,7 @@ class Style_Controller extends Controller {
     }
 
     public function screen() {
-        $data = $this->cache->get()
+        $data = $this->cache->get();
     }
 
     public function _send($data){
