@@ -47,6 +47,8 @@ class Pokladna_Controller extends Shop_Controller {
             $u = User_Model::getLogged();
             $uinfo->where('user_id', $u['user_id']);
             $c->set('addresses',$uinfo->fetch())->set('billing_address',$this->session->get('user'))->set($u);
+            $c->set('shipping_address_id',$this->session->get('shipping_address_id',-1));
+            $c->set('shipping_address',$this->session->get('shipping_address', ''));
         } else {
             $initialIndex = ($this->session->get('pokladna.shipping'))? 2 : 0;
             $c = View::factory('pokladna/adresa_notlogged')

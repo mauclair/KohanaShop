@@ -52,8 +52,10 @@ CREATE TABLE `log_login` (
 `useragent` INT NOT NULL
 ) ENGINE = MYISAM ;
 
-ALTER TABLE `indikace` CHANGE `indikace_cze` `indikace_cz` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
-ALTER TABLE `indikace_joined` CHANGE `i_refs_cze` `i_refs_cz` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
+ALTER TABLE `indikace` CHANGE `indikace_cze` `indikace_name` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
+ALTER TABLE `indikace` CHANGE `indikace_sk` `indikace_url` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL
+ALTER TABLE `indikace_joined` CHANGE `i_refs_cze` `i_refs` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
+ALTER TABLE `indikace_joined` DROP `i_refs_sk`
 
 ALTER TABLE `clanky` ADD `clanky_url` VARCHAR( 255 ) NOT NULL AFTER `title`;
 
@@ -61,3 +63,9 @@ DROP TABLE `auth_user_md5`;
 
 ALTER TABLE `payment_method`  DROP `vendor_id`,  DROP `list_order`,  DROP `payment_method_code`,  DROP `enable_processor`;
 ALTER TABLE `payment_method` CHANGE `payment_method_discount` `payment_cost` DECIMAL( 10, 2 );
+
+
+ALTER TABLE `vendor`  DROP `contact_last_name`,  DROP `contact_first_name`,  DROP `contact_middle_name`,  DROP `contact_title`,  DROP `contact_phone_1`,  DROP `contact_phone_2`,  DROP `contact_fax`,  DROP `contact_email`,  DROP `vendor_phone`,  DROP `vendor_address_1`,  DROP `vendor_address_2`,  DROP `vendor_city`,  DROP `vendor_state`,  DROP `vendor_country`,  DROP `vendor_zip`,  DROP `vendor_store_name`,  DROP `vendor_store_desc`,  DROP `vendor_category_id`,  DROP `vendor_thumb_image`,  DROP `vendor_full_image`,  DROP `vendor_currency`,  DROP `cdate`,  DROP `mdate`,  DROP `vendor_image_path`;
+ALTER TABLE `vendor` ADD `vendor_url` VARCHAR( 255 ) NOT NULL ,
+ADD `vendor_desc` TEXT NOT NULL
+

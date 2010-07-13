@@ -6,7 +6,7 @@
     </div>
 
     <? if (is::admin()): ?>
-    <div><a href="<?= url::site('adminProdukt/edit/'.$product_id)?>"><?= Kohana::lang('main.edit')?></a></div>
+    <div><a href="<?= url::site('adminProdukt/edit/'.$product_url)?>"><?= Kohana::lang('main.edit')?></a></div>
     <? endif; ?>
 
     <table id="productInfoTable">
@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td class="title"><?= Kohana::lang('product.vendor')?> </td>
-            <td><a href="<?= url::site('vyrobce/'.$vendor_id)?>"><?= $vendor_name ?></a></td>
+            <td><a href="<?= url::site('vyrobce/'.$vendor_url)?>"><?= $vendor_name ?></a></td>
         </tr>
         <tr>
             <td class="title"><?= Kohana::lang('indication.title')?> </td>

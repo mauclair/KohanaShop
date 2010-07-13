@@ -2,6 +2,7 @@
 class Indikace_Model extends Table_Model {
     public $table = 'indikace';
     public $id = 'indikace_id';
+    public $autoUrl = array('indikace_name'=>'indikace_url');
 
 
 
@@ -31,23 +32,29 @@ class Indikace_Model extends Table_Model {
         $q = "DELETE FROM indikace_joined $where";
         $this->query($q);
         $base = url::base();
-        $q  = "INSERT INTO indikace_joined (product_id,i_refs_cz,i_refs_sk)
+        $q  = "INSERT INTO indikace_joined (product_id,i_refs)
                 SELECT product_id,
-                GROUP_CONCAT( DISTINCT CONCAT( '
-                <a href=\"{$base}indikace/', indikace_cz, '.html\">', indikace_cz, '</a>
-                ' )
-                ORDER BY indikace_cz
-                SEPARATOR ', ' ) AS i_ref_cz,
-                GROUP_CONCAT( DISTINCT CONCAT( '
-                    <a href=\"{$base}indikace/', indikace_sk, '\">', indikace_sk, '</a>' )
-                    ORDER BY indikace_sk
-                    SEPARATOR ', ' ) AS i_ref_sk
+                GROUP_CONCAT( DISTINCT CONCAT( '<a href=\"{$base}indikace/', indikace_url, '.html\">', indikace_name, '</a>' )
+                    ORDER BY indikace_name
+                    SEPARATOR ', ' ) AS i_refs
                 FROM indikace_xref
                 JOIN indikace
                 USING ( indikace_id )
                 $where
                 GROUP BY product_id";
         $this->query($q);
+    }
+
+    public function updateUrls(){
+        $m = Table_Model::factory($this->table,$this->id);
+        $data = $m->fetch();
+        set_time_limit(0);
+        foreach($data as $p){
+            $t = (array)$p;
+            $t['indikace_url'] = url::title($t['indikace_name']);
+            $m->update($t);
+            unset($t);
+        }
     }
      
 }

@@ -13,6 +13,8 @@ class Product_Model extends Table_Model {
     public $table = 'product';
     public $id = 'product_id';
 
+    public $autoUrl = array('product_name'=>'product_url');
+
     public function __construct() {
         parent::__construct();
         $this->join('vendor','vendor_id');
@@ -26,7 +28,7 @@ class Product_Model extends Table_Model {
         $base = url::base();
         //$f =  "GROUP_CONCAT(DISTINCT CONCAT('<a href=\"{$base}indikace/',indikace_id,'\">',indikace_{$_SESSION['lang']},'</a>' ) SEPARATOR ', ' ) as indikace";
         
-        $this->fields = array('*',"i_refs_". Session::instance()->get('lang','cz')." as indikace");
+        $this->fields = array('*',"i_refs AS indikace");
         $this->groupBy = 'product_id';
     }
 

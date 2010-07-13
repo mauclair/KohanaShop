@@ -6,7 +6,7 @@ class Indikace_Controller extends Shop_Controller {
     }
 
     public function  __call($name,  $arguments) {
-        $p = $this->model->get($name,'indikace_'.$this->session->get('lang','cz'));
+        $p = $this->model->get($name,'indikace_url');
         if($p) {
             $this->_show($p);
         } else throw new Kohana_404_Exception();

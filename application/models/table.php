@@ -720,5 +720,18 @@ class Table_Model extends Model {
 
     }
 
+    public function updateUrls(){
+        $m = Table_Model::factory($this->table,$this->id);
+        $data = $m->fetch();
+        set_time_limit(0);
+        foreach($data as $p){
+            $t = (array)$p;
+            foreach($this->autoUrl as $k=>$v) $t[$v] = url::title($t[$k]);
+            $m->update($t);
+            unset($t);
+        }
+
+    }
+
 }
 ?>

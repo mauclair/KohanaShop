@@ -12,5 +12,5 @@
     <?= View::factory('product/prize')->set('tax',$product_taxes_value)->set('discount',$product_discount_id)->set('prize',$product_price)->render()?>
     <?=$form ?>
 </div>
-<p class="desc"><span class="small"><a href="<?= url::site('vyrobce/'.$vendor_id)?>"><?=$vendor_name?></a>, <?= $indikace?></span><br /><br /><?=$product_s_desc ?></p>
+<p class="desc"><span class="small"><a href="<?= url::site('vyrobce/'.$vendor_url)?>"><?=$vendor_name?></a>, <?= $indikace?></span><br /><br /><?=$product_s_desc ?></p>
 </div>

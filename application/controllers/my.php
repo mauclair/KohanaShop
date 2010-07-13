@@ -185,6 +185,26 @@ class My_Controller extends Crud_Controller {
             
         $this->session->set($lp,$settings);
         if(!request::is_ajax())url::redirect($lp);
+    }
+
+    public function upgrade(){
+        $model = new Indikace_Model();
+        $model->updateUrls();
+        $model->updateIrefsTable();
+
+        $model = new Category_Model();
+        $model->updateUrls();
+
+        $model = new Product_Model();
+        $model->updateUrls();
+
+        $model = new Vendor_Model();
+        $model->updateUrls();
+
+        $model = new Clanky_Model();
+        $model->updateUrls();
+        Cache::instance()->delete_all();
+        $this->template->content = 'DONE';
 
     }
 
