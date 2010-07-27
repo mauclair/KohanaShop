@@ -57,7 +57,7 @@ class Kosik_Controller extends Shop_Controller {
         foreach($p['quantity'] as $k=>$v) {
             $this->model->modify($a = array('product_id'=>$k,'quantity'=>$v));
         }
-        url::redirect('kosik');
+        url::redirect('pokladna');
     }
 }
 ?>

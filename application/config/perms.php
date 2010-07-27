@@ -13,6 +13,7 @@
                     'account'=>array('level'=>255),
                     'account_edit'=>array('level'=>255),
              ),
+             'administrace'=> array('level'=>1),
              'adminUser'=>array('level'=>0),
              'admin'=>array('level'=>0),
              'adminVymol'=>array('level'=>0),

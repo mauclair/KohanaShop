@@ -1,6 +1,6 @@
 <?
     $href  = url::site('produkt/'.$product_url);
-    $image = 'images/product/small/'.$product_thumb_image;    
+    $image = url::base().'images/product/small/'.$product_thumb_image;
     $form = View::factory('product/form')->set('product_id',$product_id)->render();
     //$i_refs = '';
 

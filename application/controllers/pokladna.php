@@ -9,11 +9,8 @@ class Pokladna_Controller extends Shop_Controller {
     }
 
     public function index() {
-
         $b = new Basket_Model();
-
-
-        $this->content->content = View::factory('basket/index')->set('data',$b->get())->set('sums',$b->sums())->render();
+        $this->content->content = View::factory('pokladna/kosik')->set('basket', View::factory('basket/index')->set('data',$b->get())->set('sums',$b->sums())->render());
         $this->content->progress->set('pos',1);
     }
 
@@ -109,6 +106,8 @@ class Pokladna_Controller extends Shop_Controller {
         //uloz do databaze
         //odesli email
         //presmeruj na podekovani
+        $this->content->progress->pos = 5;
+        $this->content->content = '';
         
     }
 

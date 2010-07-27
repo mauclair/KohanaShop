@@ -9,7 +9,10 @@
         'quick-buy' => 'Rychlý nákup, bez registrace',
         'same-as-billing' => 'Stejná jako fakturační',
         'new-address' => 'Nová adresa',
-        'save_this_address' => 'Uložit změny adresy'
+        'save_this_address' => 'Uložit změny adresy',
+        'total' => 'Celkem včetně dopravy',
+        'items' => 'Celkem za zboží',
+        'poznamka' => 'Poznámka k objednávce',
 
       );
 

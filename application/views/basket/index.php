@@ -2,8 +2,8 @@
 <?
     $sums = Basket_Model::sums();
     echo View::factory('basket/addbycode');
+    if($data):
 ?>
-
 <form method="post" action="<?= url::site('kosik/prepocitat')?>">
 <table class="cartTable">
     <thead>
@@ -42,4 +42,6 @@
      </tfoot>
 </table>
 </form>
-
+<?else:?>
+<?= Kohana::lang('basket.empty')?>
+<?endif;?>

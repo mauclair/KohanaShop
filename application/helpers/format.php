@@ -21,6 +21,19 @@ class Format_Core {
 
     }
 
+    public static function prize($number,$format = array()){
+        $default_format = array('decimals'=>2,'round-to'=>1 ,'prepend'=>'','append'=>'','pad-to'=>0,'padding-str'=>'&nbsp;');
+        $fmt = $format + $default_format;
+        $number = round($number,$fmt['round-to']);
+        $number = number_format($number, $fmt['decimals']);
+        if($fmt['pad-to'] > strlen($number)) {
+            for($i=strlen($number);$i<$fmt['pad-to'];$i++) $number = $fmt['padding-str'].$number;
+        }
+        if($fmt['prepend']) $number=$fmt['prepend'].$fmt['padding-str'].$number;
+        if($fmt['append']) $number.=$fmt['padding-str'].$fmt['append'];
+        return $number;
+    }
+
     //put your code here
 }
 ?>

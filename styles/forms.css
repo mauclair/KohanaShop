@@ -3,7 +3,7 @@
 
 form.big { width: 650px;;  }
 
-fieldset { margin: 0 0 22px 1em; border: 1px solid #a44906; padding: 12px 17px; background-color: #fbeddf; }
+fieldset { margin-bottom:22px; border: 1px solid #a44906; padding: 12px 17px; background-color: #fbeddf; }
 legend {  background-color:  #efbd74; border: 1px solid #a44906; color: #FFFFFF; font-weight: bold; padding: 4px 8px; }
 legend a { font-size:small; margin-left : 2em;}
 
@@ -11,8 +11,7 @@ label.float { float: left; display: block; width: 200px; margin: 4px 0 0 0; clea
 label {   
     width: auto;
     margin: 0 0 10px 0;
-    display: inline-block;
-    width : 100px;
+    display: inline-block;    
     text-align: right;
 }
 label.spam-protection { display: inline; width: auto; margin: 0; }
