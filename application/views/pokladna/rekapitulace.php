@@ -10,6 +10,7 @@
         <td>
             <h2><?= Kohana::lang('user.shipping-address')?></h2>
             <?=$shipping_address?>
+            <?= $shipping_save_address_options?>
             <a href="<?= url::site('pokladna/adresa')?>"><?= Kohana::lang('main.edit')?></a>
         </td>        
     </tr>

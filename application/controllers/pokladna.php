@@ -89,13 +89,26 @@ class Pokladna_Controller extends Shop_Controller {
         $basket = View::factory('basket/readOnly')->set('data',$basketModel->get())->set('sums',$basketModel->getSums());
         $billing = View::factory('pokladna/addressReadOnly')->set($this->session->get('pokladna.billing'))->render();
         $shaddr = $this->session->get('pokladna.shipping');
-        $shipping = ($shaddr && $this->session->get('pokladna.address_selector')>=0)  ? View::factory('pokladna/addressReadOnly')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
+        $shipping = ($shaddr && $this->session->get('pokladna.address_selector')>=0)
+                        ? View::factory('pokladna/addressReadOnly')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
+        $save_addres_options = '';
+        if( $this->session->get('pokladna.address_selector')>=0 && $shaddr['user_info_id']) {
+            $uinfo_model = new User_info_Model();
+            $oldAddr = $uinfo_model->get($shaddr['user_info_id']);
+            $same = true;
+            foreach($shaddr as $k=>$v){
+                if($shaddr[$k] != $oldAddr[$k]) {$same = false; break;}
+            }
+            if(!$same) $save_addres_options = View::factory ('pokladna/save_changed_address');
+        }
+
         $this->content->content =  View::factory('pokladna/rekapitulace')
                 ->set('basket',$basket->render())
                         ->set('billing_address',$billing)
                         ->set('shipping',$shipType)
                         ->set('sums',$basketModel->getSums())
-                        ->set('shipping_address',$shipping);
+                        ->set('shipping_address',$shipping)
+                        ->set('shipping_save_address_options',$save_addres_options);
         
     }
 
@@ -106,6 +119,36 @@ class Pokladna_Controller extends Shop_Controller {
         //uloz do databaze
         //odesli email
         //presmeruj na podekovani
+        xdebug_break();
+        $order_model = new Order_Model();
+        $user_info_model = new User_info_Model;
+        $note = $this->input->post('poznamka');
+        
+        $billing_address_id = $this->session->get('pokladna.billing.user_info_id');
+        if(!isset($billing_address_id)){ // neni v databazi, pridat
+            $billing_address_id = $user_info_model->add($this->session->get('pokladna.billing'));
+        }
+        $shipping_address_id = $this->session->get('pokladna.address_selector');
+        if($shipping_address_id && $shipping_address_id>0) { // selected existing address - check if match, if not updat/save due the selection
+
+        } else if($shipping_address_id == -1){ // same as billing
+            $shipping_address_id = $billing_address_id;
+        } else {
+            $shipping_address_id = $user_info_model->add($this->session->get('pokladna.shipping'));
+        }
+
+        $shipping_id = $this->session->get('pokladna.doprava.shipping_id');        
+        $note =  $this->input->post('poznamka');
+        $items = $this->session->get('basket-data');
+        $order_model->save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items);
+
+        //CLEAR DATA
+        /*
+        $this->session->delete('basket-data');
+        $this->session->delete('pokladna');
+         */
+
+
         $this->content->progress->pos = 5;
         $this->content->content = '';
         
