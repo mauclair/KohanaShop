@@ -6,3 +6,6 @@ cache/*
 cache
 images/*
 images
+application/logs/*
+application/logs
+logs
