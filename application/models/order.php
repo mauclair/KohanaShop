@@ -12,13 +12,14 @@
         $order = array(
             'shipping_id'=>$shipping_id,
             'shipping_address_id'=>$shipping_address_id,
-            'billing_address_id'=>$billing_address_id,
+            'billing_address_id'=>$billing_address_id,            
             'note' => $note,
         );
         $shipping_model = new Shipping_Model();
         $shipping_detail = $shipping_model->get($shipping_id);
         $order_id = $this->add($order);
-        $order_item = new Table_Model('order_items', 'order_item_id');
+        $this->update($a=array('order_id'=>$order_id, 'order_number'=>date('Ym').$order_id));
+        $order_item = new Table_Model('order_item', 'order_item_id');
         foreach($items as $item){
             $item_data = array(
                 'order_id'=>$order_id,
