@@ -140,17 +140,26 @@ class Pokladna_Controller extends Shop_Controller {
         $shipping_id = $this->session->get('pokladna.doprava.shipping_id');        
         $note =  $this->input->post('poznamka');
         $items = $this->session->get('basket-data');
-        $order_model->save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items);
+        $order_number = $order_model->save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items);
+
+        /**
+         SEND EMAIL
+         */
+
+         $order = $order_model->getOrder($order_number);
+
 
         //CLEAR DATA
-        /*
+        
         $this->session->delete('basket-data');
         $this->session->delete('pokladna');
-         */
+        
 
 
         $this->content->progress->pos = 5;
         $this->content->content = '';
+
+        url::redirect('uzivatel/objednavka/'.$order_number);
         
     }
 

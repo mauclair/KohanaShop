@@ -68,7 +68,7 @@ ALTER TABLE `payment_method` CHANGE `payment_method_discount` `payment_cost` DEC
 ALTER TABLE `vendor`  DROP `contact_last_name`,  DROP `contact_first_name`,  DROP `contact_middle_name`,  DROP `contact_title`,  DROP `contact_phone_1`,  DROP `contact_phone_2`,  DROP `contact_fax`,  DROP `contact_email`,  DROP `vendor_phone`,  DROP `vendor_address_1`,  DROP `vendor_address_2`,  DROP `vendor_city`,  DROP `vendor_state`,  DROP `vendor_country`,  DROP `vendor_zip`,  DROP `vendor_store_name`,  DROP `vendor_store_desc`,  DROP `vendor_category_id`,  DROP `vendor_thumb_image`,  DROP `vendor_full_image`,  DROP `vendor_currency`,  DROP `cdate`,  DROP `mdate`,  DROP `vendor_image_path`
  ADD `vendor_url` VARCHAR( 255 ) NOT NULL , ADD `vendor_desc` TEXT NOT NULL;
 
-ALTER TABLE `orders`  DROP `vendor_id`,  CHANGE `user_info_id` `billing_adddress_id` INT( 11 ) NULL DEFAULT NULL ,
+ALTER TABLE `orders`  DROP `vendor_id`,  ADD  `billing_adddress_id` INT( 11 ) NULL DEFAULT NULL , ADD  `shipping_adddress_id` INT( 11 ) NULL DEFAULT NULL ,
 CHANGE `ship_method_id` `shipping_id` INT( 11 ) NULL DEFAULT NULL;
 
 ALTER TABLE `order_item`  DROP `user_info_id`,  DROP `vendor_id`, DROP cdate, DROP mdate, DROP `order_item_currency` , DROP `order_status`, ADD `product_price_id` INT NOT NULL  ;

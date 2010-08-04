@@ -131,5 +131,16 @@ class Uzivatel_Controller extends Shop_Controller {
         $this->session->delete('user');
         url::redirect('/');
     }
+
+    public function muj_ucet(){
+        $this->template->content ='TODO> MUJ UCET';
+    }
+
+    public function objednavka($order_number){
+        $order_number = (int)$order_number;
+        $order_model = new Order_Model();
+        $order = $order_model->getOrder($order_number);
+        $this->template->content = Kohana::debug($order);
+    }
 }
 ?>
