@@ -140,7 +140,7 @@ class Uzivatel_Controller extends Shop_Controller {
         $order_number = (int)$order_number;
         $order_model = new Order_Model();
         $order = $order_model->getOrder($order_number);
-        $this->template->content = Kohana::debug($order);
+        $this->template->content = View::factory('order/readonly')->set($order);
     }
 }
 ?>

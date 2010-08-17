@@ -1,6 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 /**
  * @property Condition_Core $where
+ * @property Database_Core $db
  */
 class Table_Model extends Model {
     public $table;

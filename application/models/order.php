@@ -14,6 +14,7 @@
     }
 
     public function save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items ){
+        $this->query("START TRANSACTION");
         $order = array(
             'shipping_id'=>$shipping_id,
             'shipping_address_id'=>$shipping_address_id,
@@ -25,7 +26,11 @@
         $order['order_id'] = $this->add($order);
         $order['order_number'] = date('Ym').$order['order_id'];
 
-        $this->update($order);
+        if(!$this->update($order)) {
+            $this->query("ROLLBACK");
+            error::add(Kohana::lang('orders.errors.updating-order'));
+            return false;
+        }
         $order_item = new Table_Model('order_item', 'order_item_id');
         foreach($items as $item){
             $item_data = array(
@@ -36,8 +41,13 @@
                 'product_quantity'=>$item['count'],
 
              );
-            $order_item->add($item_data);
+            if(!$order_item->add($item_data)) {
+                $this->query("ROLLBACK");
+                error::add(Kohana::lang('orders.errors.adding-item'));
+                return false;
+            }
         }
+        $this->query("COMMIT");
         return $order['order_number'];
     }
 
@@ -46,6 +56,8 @@
         $result = $this->get($order_number, 'order_number');
         if(!$result) return false;
         $user_info_model = new User_info_Model();
+
+
         $result['billing_address'] = $user_info_model->get($result['billing_address_id']);
         if($result['billing_address_id']==$result['shipping_address_id']) {
             $result['shipping_address'] = $result['billing_address'];
