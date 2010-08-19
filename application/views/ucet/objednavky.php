@@ -14,7 +14,7 @@
         <td><?= date('d.m.Y H:i',$objednavka->mdate) ?></td>
         <td><?= Kohana::lang('order.status_str.'.$objednavka->order_status)?></td>
         <td><?= $objednavka->order_subtotal + $objednavka->order_shipping_tax ?></td>
-        <td><?= Kohana::lang('main.show')?></td>
+        <td><a href="<?= url::site('uzivatel/objednavka/'.$objednavka->order_number)?>"><?= Kohana::lang('main.show')?></a></td>
     </tr>
 <?endforeach;?>
 </table>

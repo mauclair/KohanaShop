@@ -39,8 +39,10 @@ ALTER TABLE `user_info` DROP `last_name` ,DROP `first_name` ,DROP `middle_name`,
 
 ALTER TABLE `orders` DROP INDEX `user_id`;
 UPDATE orders SET user_id = (SELECT user_id FROM user WHERE old_user_id = orders.user_id LIMIT 1);
-ALTER TABLE `orders` CHANGE `user_id` `user_id` INT NOT NULL;
-ALTER TABLE `orders` ADD INDEX ( `user_id` );
+UPDATE orders SET billing_address_id = (SELECT user_info_id FROM user_info WHERE orders.user_id NOT NULL AND user_info.user_id = orders.user_id AND address_type = 'BT')
+
+ALTER TABLE `orders` CHANGE `user_id` `user_id` INT NOT NULL, DROP  user_id;
+
 
 
 

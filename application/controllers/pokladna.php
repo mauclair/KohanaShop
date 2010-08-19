@@ -87,10 +87,10 @@ class Pokladna_Controller extends Shop_Controller {
 
 
         $basket = View::factory('basket/readOnly')->set('data',$basketModel->get())->set('sums',$basketModel->getSums());
-        $billing = View::factory('pokladna/addressReadOnly')->set($this->session->get('pokladna.billing'))->render();
+        $billing = View::factory('user_info/read_only_html')->set($this->session->get('pokladna.billing'))->render();
         $shaddr = $this->session->get('pokladna.shipping');
         $shipping = ($shaddr && $this->session->get('pokladna.address_selector')>=0)
-                        ? View::factory('pokladna/addressReadOnly')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
+                        ? View::factory('user_info/read_only_html')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
         $save_addres_options = '';
         if( $this->session->get('pokladna.address_selector')>=0 && $shaddr['user_info_id']) {
             $uinfo_model = new User_info_Model();

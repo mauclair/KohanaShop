@@ -10,7 +10,8 @@
      public function __construct() {
          parent::__construct();
          $this->join('product', 'product_id');
-         $this->join('product_price', 'product_price_id');
+         $this->join('product_taxes', 'product_taxes_id');
+         $this->join('product_price', 'product_price_id','LEFT JOIN');
     }
 
  }

@@ -11,6 +11,7 @@
      
     public function __construct() {
         parent::__construct();
+        $this->join('user_info', null, 'JOIN', 'user_info.user_info_id=orders.billing_address_id');
     }
 
     public function save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items ){

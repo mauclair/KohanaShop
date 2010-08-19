@@ -140,7 +140,10 @@ class Uzivatel_Controller extends Shop_Controller {
         $order_number = (int)$order_number;
         $order_model = new Order_Model();
         $order = $order_model->getOrder($order_number);
-        $this->template->content = View::factory('order/readonly')->set($order);
+        $order['billing_address'] = View::factory('user_info/read_only_html')->set($order['billing_address'])->render();
+        if($order['shipping_address']) $order['shipping_address'] = View::factory('user_info/read_only_html')->set($order['shipping_address'])->render();
+        $content = View::factory('order/readonly')->set($order);      
+        $this->template->content = $content->render();
     }
 }
 ?>
