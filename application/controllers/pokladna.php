@@ -92,14 +92,17 @@ class Pokladna_Controller extends Shop_Controller {
         $shipping = ($shaddr && $this->session->get('pokladna.address_selector')>=0)
                         ? View::factory('user_info/read_only_html')->set($shaddr) : Kohana::lang('pokladna.same-as-billing');
         $save_addres_options = '';
-        if( $this->session->get('pokladna.address_selector')>=0 && $shaddr['user_info_id']) {
+        if( $this->session->get('pokladna.address_selector')>=0 && isset($shaddr['user_info_id']) && $shaddr['user_info_id']) {
             $uinfo_model = new User_info_Model();
             $oldAddr = $uinfo_model->get($shaddr['user_info_id']);
             $same = true;
+            $score = 0;
             foreach($shaddr as $k=>$v){
-                if($shaddr[$k] != $oldAddr[$k]) {$same = false; break;}
+                if($shaddr[$k] != $oldAddr[$k]) {$score ++; $same = false; }
             }
-            if(!$same) $save_addres_options = View::factory ('pokladna/save_changed_address');
+            $modifying_billing_address = ($this->session->get('pokladna.billing.user_info_id') == $this->session->get('pokladna.shipping.user_info_id'));
+            if(!$same)
+                $save_addres_options = View::factory ('pokladna/save_changed_address')->set('new_address',(2*$score>count($shaddr)))->set('modifiing_billing_address',$modifying_billing_address );
         }
 
         $this->content->content =  View::factory('pokladna/rekapitulace')
@@ -119,28 +122,21 @@ class Pokladna_Controller extends Shop_Controller {
         //uloz do databaze
         //odesli email
         //presmeruj na podekovani
-        xdebug_break();
-        $order_model = new Order_Model();
-        $user_info_model = new User_info_Model;
-        $note = $this->input->post('poznamka');
-        
-        $billing_address_id = $this->session->get('pokladna.billing.user_info_id');
-        if(!isset($billing_address_id)){ // neni v databazi, pridat
-            $billing_address_id = $user_info_model->add($this->session->get('pokladna.billing'));
-        }
-        $shipping_address_id = $this->session->get('pokladna.address_selector');
-        if($shipping_address_id && $shipping_address_id>0) { // selected existing address - check if match, if not updat/save due the selection
 
-        } else if($shipping_address_id == -1){ // same as billing
-            $shipping_address_id = $billing_address_id;
-        } else {
-            $shipping_address_id = $user_info_model->add($this->session->get('pokladna.shipping'));
+        $order_model = new Order_Model();
+
+        $user_id = $this->checkoutUserHandling();
+        if(!$user_id) { // error
+            Throw new Kohana_Exception('USER COULD NOT BE CREATED. FAILING. Contact administrator. snoblucha@email.cz');
         }
+        $addresses_ids = $this->checkoutAddressesHandling($user_id);
+        $note = $this->input->post('poznamka');
+
 
         $shipping_id = $this->session->get('pokladna.doprava.shipping_id');        
         $note =  $this->input->post('poznamka');
         $items = $this->session->get('basket-data');
-        $order_number = $order_model->save($billing_address_id, $shipping_address_id, $shipping_id, $note, $items);
+        $order_number = $order_model->save($addresses_ids['billing_address_id'], $addresses_ids['shipping_address_id'], $shipping_id, $note, $items);
 
         /**
          SEND EMAIL
@@ -152,15 +148,66 @@ class Pokladna_Controller extends Shop_Controller {
         //CLEAR DATA
         
         $this->session->delete('basket-data');
-        $this->session->delete('pokladna');
-        
-
+        $this->session->delete('pokladna');       
 
         $this->content->progress->pos = 5;
         $this->content->content = '';
 
         url::redirect('uzivatel/objednavka/'.$order_number);
         
+    }
+    /**
+     * Get the user for order and return user_id. If user is not logged in, temporary user is created.
+     * @return integer user_id
+     */
+    private function checkoutUserHandling(){
+        if(User_Model::isLogged()){// user is logged, just retur his/her ID
+            $user = User_Model::getLogged();
+            return $user['user_id'];
+        } else { // not Logged ... register new one and send email for registration
+            $user_Model = new User_Model();            
+            $user = Uzivatel_Controller::$clean_user;
+
+            $user['username'] = $user['email'] = $this->session->get('pokladna.billing.email');
+            $user['plain_password'] = Text::random( 'alnum', 5);
+            $user['password_again'] = $user['password'] = $user['plain_password'];
+            if(($user['user_id'] = $user_Model::add($user))) {
+                return $user['user_id'];
+            } else {
+                return false;
+            }
+        }
+    }
+
+    private function checkoutAddressesHandling($user_id){
+        $user_info_model = new User_info_Model;
+        $billing_address_id = $this->session->get('pokladna.billing.user_info_id');
+        if(!$billing_address_id ){ // neni v databazi, pridat
+            $billing_address = $this->session->get('pokladna.billing');
+            $billing_address['user_id'] = $user_id;
+            $billing_address_id = $user_info_model->add();
+        }
+        $shipping_address_id = $this->session->get('pokladna.address_selector');
+        $shipping_address = $this->session->get('pokladna.shipping');
+        $shipping_address['user_id'] = $user_id;
+        
+        if($shipping_address_id && $shipping_address_id>0) { // selected existing address - check if match, if not updat/save passed thru the selection
+            $save_address = $this->input->post('save_address');
+            if($save_address == 'new' || ($shipping_address_id == $billing_address_id && $save_address == 'update' )) { // want to save as a new address,
+                //or modifying billing address  - WE DO NOT ALLOW IT ... unpredicted behaiviour
+                unset($shipping_address['user_info_id']);
+                $shipping_address_id = $user_info_model->add($shipping_address);
+            } else if($save_address == 'update') { //
+                  $user_info_model->update($shipping_address);
+            } else { //no changes to address
+                
+            }
+        } else if($shipping_address_id == -1){ // same as billing
+            $shipping_address_id = $billing_address_id;
+        } else {                        
+            $shipping_address_id = $user_info_model->add($shipping_address);
+        }
+        return array('shipping_address_id'=>$shipping_address_id, 'billing_address_id'=>$billing_address_id);
     }
 
     public function ulozAdresy() {

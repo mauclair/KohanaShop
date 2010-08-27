@@ -63,8 +63,8 @@
         if($result['billing_address_id']==$result['shipping_address_id']) {
             $result['shipping_address'] = $result['billing_address'];
             $result['same_address'] = true;
-        } else {
-            $result['shipping_address'] = $user_info_model->get($result['shipping_address_id']);
+        } else {            
+            $result['shipping_address'] = $user_info_model->get($result['shipping_address_id']);            
             $result['same_address'] = false;
         }
         $shipping_model = new Shipping_Model();

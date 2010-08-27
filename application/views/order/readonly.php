@@ -20,44 +20,43 @@
         <th></th>
     </tr>
     <?
-            $sums = array('sum'=>0,'count'=>0);
+            $sums = array('sum' => 0, 'count' => 0);
             foreach ($items as $item):
                 $sums['sum'] += $item->product_item_price;
                 $sums['count'] += $item->product_quantity;
     ?>
                 <tr>
-                    <td><a href="<?= url::site('produkt/'.$item->product_url)?>"><?= $item->product_name ?></a></td>
+                    <td><a href="<?= url::site('produkt/' . $item->product_url) ?>"><?= $item->product_name ?></a></td>
                     <td><?= $item->product_quantity ?></td>
                     <td><?= $item->product_taxes_value ?>%</td>
-                    <td class="right"><?= format::prize( $item->product_item_price) ?></td>
+                    <td class="right"><?= format::prize($item->product_item_price) ?></td>
                 </tr>
-<? endforeach; ?>
+    <? endforeach; ?>
             </table>
             <table class="right">
                 <tr>
                     <td class="right"><?= Kohana::lang('pokladna.items') ?></td>
                     <td><?= format::prize($sums['sum']) ?></td>
-                    
+
                 </tr>
                 <tr>
                     <td class="right">Doprava</td>
                     <td><?= format::prize($order_shipping) ?></td>
-                    </tr>
-                    <tr>
-                        <td class="right"><?= Kohana::lang('pokladna.total') ?></td>
-                        <td><?=format::prize( $sums['sum'] + $shipping['shipping_cost']) ?></td>
-                        
-                    </tr>
-                </table>
-<? /*
-                      <div>
-                      <h2><label for="poznamka"><?= Kohana::lang('pokladna.poznamka')?></label></h2>
-                      <textarea name="poznamka" id="poznamka" rows="10" cols="60"></textarea>
-                      <br />
-                      <input type="submit" class="button" value="<?= Kohana::lang('pokladna.potvrtdit-dokoncit')?>">
-                      </div>
+                </tr>
+                <tr>
+                    <td class="right"><?= Kohana::lang('pokladna.total') ?></td>
+                    <td><?= format::prize($sums['sum'] + $shipping['shipping_cost']) ?></td>
+
+                </tr>
+            </table>
+
+            <div>
+                <h2><?= Kohana::lang('pokladna.poznamka') ?></h2>
+                <p><?= $note ?></p>
+
+
+</div>
 
 
 
 
-                     */ ?>

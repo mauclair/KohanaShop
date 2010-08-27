@@ -362,6 +362,7 @@ class Table_Model extends Model {
     public function get($id=false,$field=false,$multi=false) {
         if (!$field) $field=$this->id;
         $owhere = $this->where;
+        $this->where = new Condition_Core();
         if($id || $id !== false)
             if (!is_array($id)) {
                 $this->where->where($field,$id);
@@ -373,7 +374,7 @@ class Table_Model extends Model {
                 }
             }
         $q = $this->db->query($this->getQuery());
-        kohana::log('error', $this->getQuery());
+        //kohana::log('error', $this->getQuery());
         $this->where = $owhere;
         if ($multi) return $q;
         else return $q->result(false)->current();
