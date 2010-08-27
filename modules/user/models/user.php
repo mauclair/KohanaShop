@@ -40,6 +40,9 @@ class User_Model extends Table_Model {
     public function add(&$d) {
         if($this->validate($d)) {
             $this->validation = array();
+            $d['password'] = md5($d['password']);
+            $d['password_again'] = md5($d['password_again']);
+            $d['npwd'] = self::hash($d['password'], $d['email']);
             return parent::add($d);
         } else return false;
     }
