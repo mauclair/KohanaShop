@@ -396,7 +396,7 @@ class Table_Model extends Model {
 
 
     public function validate(&$a,$adding = true) {
-
+        
         if(count($this->validation)>0) {
             $va = new Validation($a);
             // DO validation via Validation class

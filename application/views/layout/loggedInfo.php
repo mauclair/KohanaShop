@@ -13,14 +13,10 @@
 </div>
   <?} else {?>
 <form id="upLogin" method="post" action="<?= url::site('uzivatel/login')?>">
-    <div id="directLogin">
-        <div>
-            <input type="hidden" value="" name="page">
-            <input type="hidden" value="userLogin" name="func">
-        </div>
-        <div id="directLoginUsername"><input type="text" size="16" maxlength="32" name="username"></div>
-        <div id="directLoginPassword"><input type="password" size="16" maxlength="32" name="password"></div>
-        <div id="directLoginSubmit"><input type="submit" value="Přihlásit" name="Login"></div>
+    <div id="directLogin">        
+        <div id="directLoginUsername"><input type="text"  name="username" /></div>
+        <div id="directLoginPassword"><input type="password" name="password" /></div>
+        <div id="directLoginSubmit"><input type="submit" value="Přihlásit" name="Login" /></div>
     </div>
 </form>
 <?  }?>

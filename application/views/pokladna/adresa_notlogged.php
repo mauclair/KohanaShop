@@ -17,6 +17,8 @@
         api.onClick(function(event,index){
             if(index==1) { //
                 $('#Register').validate();
+            } else if(index==2){
+                $('#addresses').validate();                
             }
         });
     });

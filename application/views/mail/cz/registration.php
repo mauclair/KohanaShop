@@ -1,0 +1,1 @@
+Registrace do internetovéhop obchodu http://Bylinarstvi.cz proběhla úspěšně,

@@ -61,7 +61,7 @@ class Pokladna_Controller extends Shop_Controller {
         $this->content->progress = '';
         $ca = $this->session->get('pokladna.billing',Uzivatel_Controller::$clean_user);
         $sa = $this->session->get('pokladna.shipping');
-        $address_selector = $this->session->get('pokladna.address_selector');
+        $address_selector = $this->session->get('pokladna.address_selector',-1);
         
         $shipping_address = ($sa && $address_selector > -1 && $address_selector!==false) ?
                             View::factory('pokladna/address_form')->set($sa)->set('prefix','shipping_') : '';
@@ -127,6 +127,7 @@ class Pokladna_Controller extends Shop_Controller {
 
         $user_id = $this->checkoutUserHandling();
         if(!$user_id) { // error
+            
             Throw new Kohana_Exception('USER COULD NOT BE CREATED. FAILING. Contact administrator. snoblucha@email.cz');
         }
         $addresses_ids = $this->checkoutAddressesHandling($user_id);
@@ -161,6 +162,7 @@ class Pokladna_Controller extends Shop_Controller {
      * @return integer user_id
      */
     private function checkoutUserHandling(){
+        
         if(User_Model::isLogged()){// user is logged, just retur his/her ID
             $user = User_Model::getLogged();
             return $user['user_id'];
@@ -169,9 +171,12 @@ class Pokladna_Controller extends Shop_Controller {
             $user = Uzivatel_Controller::$clean_user;
 
             $user['username'] = $user['email'] = $this->session->get('pokladna.billing.email');
-            $user['plain_password'] = Text::random( 'alnum', 5);
+            $user['plain_password'] = text::random( 'alnum', 5);
             $user['password_again'] = $user['password'] = $user['plain_password'];
-            if(($user['user_id'] = $user_Model::add($user))) {
+            
+            $user['user_id'] = $user_Model->add($user);
+            $user_Model->sendRegistrationEmail($user);
+            if($user['user_id']) {
                 return $user['user_id'];
             } else {
                 return false;
@@ -185,10 +190,11 @@ class Pokladna_Controller extends Shop_Controller {
         if(!$billing_address_id ){ // neni v databazi, pridat
             $billing_address = $this->session->get('pokladna.billing');
             $billing_address['user_id'] = $user_id;
-            $billing_address_id = $user_info_model->add();
+            $billing_address['address_type']='BT';
+            $billing_address_id = $user_info_model->add($billing_address);
         }
         $shipping_address_id = $this->session->get('pokladna.address_selector');
-        $shipping_address = $this->session->get('pokladna.shipping');
+        $shipping_address = $this->session->get('pokladna.shipping',  array());
         $shipping_address['user_id'] = $user_id;
         
         if($shipping_address_id && $shipping_address_id>0) { // selected existing address - check if match, if not updat/save passed thru the selection

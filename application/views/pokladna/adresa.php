@@ -1,9 +1,9 @@
-<form action="<?= url::site('pokladna/ulozAdresy')?>" method="post">
+<form action="<?= url::site('pokladna/ulozAdresy')?>" id="addresses" method="post">
     <div>
         <h3><?= Kohana::lang('user.kontaktni-info')?></h3>
 
         <label for="email" ><?= Kohana::lang('user.email')?>*</label>
-        <input type="text" name="email" id="email" value="<?= $email ?>"  class="required"/>
+        <input type="text" name="email" id="email" value="<?= $email ?>"  class="required email"/>
 
         <label for="phone" ><?= Kohana::lang('user.phone') ?>*</label>
         <input type="text" name="phone_1" id="phone_1" value="<?= $phone_1 ?>" class="required"/>
@@ -21,7 +21,7 @@
             <? $adresses  = array('-1'=>Kohana::lang('pokladna.same-as-billing'),'0'=>Kohana::lang('pokladna.new-address'));
             foreach($addresses as $a) {
                 $adresses[$a->user_info_id] = $a->name;
-            }?>
+            }?>            
             <?= form::dropdown('address_selector',$adresses,$shipping_address_id)?>
             <div id="shipping_address_container">
                 <?= $shipping_address?>

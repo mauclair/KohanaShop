@@ -13,7 +13,7 @@ class User_Model extends Table_Model {
     public $table = 'user';
     public $id =  'user_id';
 
-    public $validation = array('name'=>'required','password'=>array('required','matches[password_again]'),'email'=>array('required','valid::email'));
+    public $validation = array('password'=>array('required','matches[password_again]'),'email'=>array('required','valid::email'));
 
     public function __construct() {
         parent::__construct('user');
@@ -37,14 +37,16 @@ class User_Model extends Table_Model {
         else return false;
     }
 
-    public function add(&$d) {
-        if($this->validate($d)) {
+    public function add(&$d) {               
+        if($this->validate($d)) {                
             $this->validation = array();
             $d['password'] = md5($d['password']);
             $d['password_again'] = md5($d['password_again']);
-            $d['npwd'] = self::hash($d['password'], $d['email']);
+            $d['npwd'] = self::hash($d['password'], $d['email']);            
             return parent::add($d);
-        } else return false;
+        } else {            
+            return false;
+        }
     }
 
 

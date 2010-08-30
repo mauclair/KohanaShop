@@ -24,7 +24,7 @@
     <br />
 
     <label for="<?=$prefix?>zip" ><?= Kohana::lang('user.zip') ?>*</label>
-    <input type="text" class="w05" name="<?=$prefix?>zip" id="<?=$prefix?>zip" value="<?= $zip ?>"  class="required"/>
+    <input type="text" class="w05 required" name="<?=$prefix?>zip" id="<?=$prefix?>zip" value="<?= $zip ?>"  class="required"/>
 
     <label for="<?=$prefix?>city"><?= Kohana::lang('user.city') ?>*</label>
     <input type="text" name="<?=$prefix?>city" id="<?=$prefix?>city" value="<?= $city ?>"  class="required w25"/><br />
