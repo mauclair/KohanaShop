@@ -87,7 +87,12 @@ class Table_Model extends Model {
      */
     public $files = array();
 
-
+    /**
+     *
+     * @param string $table
+     * @param string $id
+     * @return Table_Model
+     */
      public static function factory($table='',$id=''){
          $class = get_class();
          return new $class($table,$id);

@@ -155,6 +155,7 @@ class My_Controller extends Crud_Controller {
         foreach($_POST as $k=>$v) {
             $filters['filters'][$k] = $v;
         }
+        
         $this->session->set($lp,$filters);        
         if(!request::is_ajax())url::redirect($lp);
 
