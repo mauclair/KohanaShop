@@ -14,8 +14,7 @@ class AdminProducts_Controller extends Administrace_Controller {
     }
 
     public function seznam() {
-        $filters = $this->session->get('administrace/adminProducts.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));
-        echo Kohana::debug($filters);
+        $filters = $this->session->get('administrace/adminProducts.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));        
         $count = $this->model->fetch()->count();
         $pagination = new Pagination(array('total_items'=>$count,'base_url'=>'administrace/adminProducts/seznam/','uri_segment'=>'strana'));
         $offset = $pagination->sql_offset;        
