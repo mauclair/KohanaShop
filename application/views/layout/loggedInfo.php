@@ -8,7 +8,7 @@
    <div id="loggedInfoLogout"><a  href="<?= url::site('uzivatel/logout')?>"><?= Kohana::lang('user.logout')?></a></div>
    <div id="loggedInfoMyAccount"><a <?= is::href('ucet', array('ucet/*'))?>><?= Kohana::lang('user.account')?></a></div>
  <? if ( User_Model::isAdmin()){ ?>
-   <div id="loggedInfoAdministration"> <a   href="<?= url::site('admininstrace')?>"><?= Kohana::lang('admin.title')?></a></div>
+   <div id="loggedInfoAdministration"> <a   href="<?= url::site('administrace')?>"><?= Kohana::lang('admin.title')?></a></div>
  <?} ?>
 </div>
   <?} else {?>

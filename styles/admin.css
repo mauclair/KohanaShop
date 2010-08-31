@@ -14,67 +14,29 @@ body {
 	Background-color: #FFFFFF;
 }
 
-A:Link,A:Visited,A:Active {
-	Color: #000000;
-	Text-Decoration: none;
-}
-
-A:Hover {
-	Color: #FF0000;
-	Text-Decoration: Underline;
-}
 
 A:Link .bLink,A:Visited .bLink {
-	Font-Family: Verdana, Arial, Tahoma;
+
 	Font-Size: 12px;
 	Font-Weight: normal;
 	Color: #BF0000;
 	text-decoration: underline;
 }
 
-A:Hover .bLink {
-	Font-Family: Verdana, Arial, Tahoma;
-	Font-Size: 12px;
-	Font-Weight: normal;
-	Color: #ff0000;
-}
-
-A.hLink,A:Visited .hLink {
-	Font-Family: Verdana, Arial, Tahoma;
-	Font-Size: 12px;
-	Font-Weight: normal;
-	Color: #FFFFFF;
-}
-
-A:Hover .hLink {
-	Font-Family: Verdana, Arial, Tahoma;
-	Font-Size: 12px;
-	Font-Weight: normal;
-	Color: #FFFFFF;
-}
-
-#leftmenu {
-	width: 200px;
+#leftMenu {
+	width: 150px;
 	border-right: 1px solid #cccccc;
+        float:left;
+        overflow : auto;
 }
 
-TABLE.RecordsTable {
-	border: 1px outset #000000;
-}
 
-TABLE.SearchTable {
-	border: 1px outset #000000;
-	background-color: #8B8BA9;
-}
-
-.HeaderTable {
+th {
 	background-color: #444455;
+
 }
 
-.MenuTable {
-	background-color: #444455;
-	border: 1px outset #000000;
-}
+.clear { clear:both;}
 
 .ErrorTable {
 	width: 100%;
@@ -84,108 +46,18 @@ TABLE.SearchTable {
 	border: 1px solid #000000;
 }
 
-.FooterTable {
-	background-color: #444455;
-	Font-Weight: normal;
-	color: #FFFFFF;
-	padding: 5px;
+#header {
+    height : 30px;
+    padding: 10px;
 }
 
-.RecordsTable {
-	width : 100%;
-	text-align : center;	
-	
+#footer {
+    padding: 10px;
+    background : #aaa;
 }
 
-.RecordsTableHeader, th {
-	background-color: #606082;
-	font-weight: bold;
-	color: #FFFFFF;
-	Border-Bottom: #000000 1px outset;
-	white-space: nowrap;
-	padding: 4px;
+#content {
+    overflow : auto;
+    padding-left: 10px;
 }
 
-.RecordsTableAlternateHeader {
-	background-color: #606082;
-	font-weight: bold;
-	color: #FFFFFF;
-	Border-Bottom: #000000 1px outset;
-	Border-Top: #000000 1px outset;
-	white-space: nowrap;
-	padding: 4px;
-}
-
-.RecordsTableHeaderVertical {
-	background-color: #E0B571;
-	font-weight: bold;
-	color: #000000;
-	Border-Right: #000000 1px outset;
-	padding: 4px;
-}
-
-.RowSelected {
-	background-color: #FFFFCC;
-}
-
-.HeaderText {
-	font-weight: bold;
-	font-size: 14px;
-	color: #FFFFFF;
-	white-space: nowrap;
-}
-
-.bHeaderText {
-	font-weight: bold;
-	font-size: 14px;
-	color: #000000;
-	white-space: nowrap;
-}
-
-.Button, a.Button {
-	Color: #FFFFFF;
-	font-weight: bold;
-	BackGround-Color: #65658D;
-	border: 1px outset #000000;
-	cursor: pointer;
-}
-
-.ButtonRollover {
-	Color: #FFFFFF;
-	Background: #000000;
-	border: 1px outset #FFFFFF;
-	cursor: pointer;
-}
-
-.ErrorText {
-	font-size: 10px;
-	color: #FFFFFF;
-	white-space: nowrap;
-}
-
-.white {
-	font-size: 10px;
-	color: #FFFFFF;
-}
-ul {
-	 padding-left : 1em;
-}
-
-ul li {
-	font-size: 12px;
-	display: block;
-}
-
-.InputLabel {
-	float : left;	
-	width :  15em;
-	text-align : right;
-	padding-right: 1em;
-	padding-top : 3px;
-}
-
-input {
-	  height : 20px;
-	}
-
-.center { text-align:center;}

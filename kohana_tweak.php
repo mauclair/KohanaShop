@@ -30,7 +30,7 @@ class encrypt extends Encrypt_Core{}
 class image extends Image_Core{}
 class input extends Input_Core{}
 class orm   extends ORM_Core{}
-class pagination extends Pagination_Core{}
+class Pagination extends Pagination_Core{}
 class profiler extends Profiler_Core{}
 class session extends Session_Core{}
 class uri extends URI_Core{}
