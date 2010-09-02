@@ -14,6 +14,7 @@ ob_start();
 
   include('reset.css');
   include('text.css');
+
   /*include('basket.css');
   include('forms.css');
   include('product4.css');
@@ -25,7 +26,7 @@ ob_start();
   include('caj.css');*/
 
   include('admin.css');
-  include('forms.css');
+  include('admin_forms.css');
   include('tabs.css');
 
  $c = ob_get_clean();

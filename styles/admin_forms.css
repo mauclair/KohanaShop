@@ -1,48 +1,57 @@
-@CHARSET "UTF-8";
-/*   COLORS
- 	ruzova :  #f2485c
-	hneda:   #a44906
-	kosik  :   #efbd74
-	lista_l :   #f1c684
-    menu_l:  #fbeddf
-*/
 
-.requied{	position : relative;}
-.infoImg{ position:relative; left : -20px; padding-top : 5px;}
-
-form.big { width: 700px;;  }
-
-fieldset { margin: 0 0 22px 1em; border: 1px solid #ddd; padding: 12px 17px; background-color: #eee; }
-legend {  border: 1px solid #ddd; color: #000; font-weight: bold; padding: 4px 8px; background-color: #fff;}
-legend a { font-size:small; margin-left : 2em;}
-
-label.float { float: left; display: block; width: 200px; margin: 4px 0 0 0; clear: left; padding-right : 1em; text-align:right;}
-label {  width: auto; margin: 0 0 10px 0; }
-label.spam-protection { display: inline; width: auto; margin: 0; }
-
-input.inp-text, textarea, input.choose, input.answer { border: 1px solid #bbb; padding: 3px;display:block;}
-input.inp-text { width: 300px; margin: 0 0 8px 0; }
-textarea { width: 550px; height: 150px; margin: 0 0 12px 0; display: block; }
-
-input.choose { margin: 0 2px 0 0; }
-input.answer { width: 40px; margin: 0 0 0 10px; }
-.big input[type=submit] { clear:both; }
-.big input[type=radio], .big input[type=checkbox]{
-	height : 16px;
-	display:block;
-}
-.big input[type=text],.big  input[type=password],.big select { width:300px;  border: 1px solid #000; margin : 2px; height:20px; display:block;}
-
-.big fieldset div {position:relative; overflow: auto;}
-
-form br { display: none; }
-
-fieldset fieldset{	
-	margin : 5px;
+form {	
+	text-align: left;
 }
 
-fieldset fieldset legend {
-	background-color: transparent;
-	border: none;
-	color:black;
+fieldset {
+	margin-bottom: 10px;
+	border: 1px solid #99B3B4;
+	padding: 10px;;
 }
+
+legend {
+	display: none;
+}
+
+form h3 {
+	clear: both;
+	padding: 5px 0px 10px 0px;
+	font-size: 14px;
+}
+
+form label {
+	display: block;
+        float:left;
+	width: 200px;
+	font-size: 12px;
+	line-height: 14px;
+        font-weight: bold;
+        color: #567475;
+        padding-top: 6px;
+        border-bottom: 1px dotted #567475;
+        
+}
+
+form input, form select {
+	display: block;
+	border: 1px solid #99b3b4;
+        width: 220px;
+	background: #e4ebeb;
+	font: 11px verdana, sans-serif;
+	color:#443;
+	padding:3px;
+	margin-bottom:4px;
+	outline:none;
+}
+
+form select {	
+	display: block;
+}
+
+
+
+form textarea {
+	margin-top: 3px;
+}
+
+form br {clear:left;}
