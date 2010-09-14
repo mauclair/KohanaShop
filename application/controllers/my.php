@@ -182,6 +182,8 @@ class My_Controller extends Crud_Controller {
             } else {
                 $settings['sort']['desc'] = 'DESC';
             }
+        } else {
+            $settings['sort']['desc']=$desc;
         }
             
         $this->session->set($lp,$settings);

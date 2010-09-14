@@ -539,7 +539,7 @@ class Table_Model extends Model {
     public function apply_filters($filters) {
         if (!is_array($filters)) return false;
         foreach($filters as $k=>$v) {
-            $this->filter[] = array($k=>$v);
+            if($v) $this->where($k, $v);
         }
         return $this;
     }

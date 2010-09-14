@@ -16,12 +16,16 @@ class AdminProducts_Controller extends Administrace_Controller {
     }
 
     public function seznam() {
-        $filters = $this->session->get('administrace/adminproduct.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));        
+        $filters = $this->session->get('administrace/adminProducts.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));
+        $this->model->apply_filters($filters);
+        
         $count = $this->model->fetch()->count();
         $pagination = new Pagination(array('total_items'=>$count,'base_url'=>'administrace/adminProducts/seznam/','uri_segment'=>'strana'));
-        $offset = $pagination->sql_offset;        
+        $offset = $pagination->sql_offset;
+        
+        //$this->model->apply_search($string)
         $this->model->limit($offset,$pagination->items_per_page);        
-        $v = View::factory('admin/products/table');        
+        $v = View::factory('admin/products/table');
         $v->set('pagination',$pagination->render());
         $v->filters=$filters;
         $v->vendors = Table_Model::factory('vendor', 'vendor_id')->getForSelect('vendor_id', 'vendor_name' ,true);

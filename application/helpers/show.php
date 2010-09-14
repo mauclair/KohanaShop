@@ -13,5 +13,21 @@ class Show_Core {
         }
         return $res;
     }
+
+    public static function asort($text,$key){
+        $res = false;
+        $uri = url::current();
+        $sort = Session::instance()->get($uri.'.sort');
+        $desc = 'asc';
+        if($sort && isset($sort['field']) && $sort['field']== $key){
+            if($sort['desc']=='ASC'){
+                    $desc = 'desc';
+                    $res = '<img src="imgs/icons/asc.png" alt="'.$key.' ASC" />';
+                } else {
+                    $res = '<img src="imgs/icons/desc.png" alt="'.$key.' DESC" />';
+            }
+        }
+        return '<a href="'.url::site(URI_Core::instance()->segment(1).'/sort/'.$key.'/'.$desc).'">'.$text.' '.$res.'</a>';
+    }
 }
 ?>
