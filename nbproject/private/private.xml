@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/D:/work/web/kohanashop/application/controllers/pokladna.php</file>
+        <file>file:/D:/work/web/kohanashop/application/sql/userUpdate.sql</file>
+        <file>file:/D:/work/web/kohanashop/application/models/order.php</file>
+        <file>file:/D:/work/web/kohanashop/application/models/order_items.php</file>
+        <file>file:/D:/work/web/kohanashop/application/controllers/uzivatel.php</file>
+        <file>file:/D:/work/web/kohanashop/system/libraries/Session.php</file>
+        <file>file:/D:/work/web/kohanashop/application/controllers/my.php</file>
+        <file>file:/D:/work/web/kohanashop/application/models/indikace.php</file>
+        <file>file:/D:/work/web/kohanashop/application/models/product.php</file>
+        <file>file:/D:/work/web/kohanashop/application/libraries/Stegger.class.inc.php</file>
+        <file>file:/D:/work/web/kohanashop/application/models/table.php</file>
+        <file>file:/D:/work/web/kohanashop/application/controllers/examples.php</file>
+        <file>file:/D:/work/web/kohanashop/application/controllers/kategorie.php</file>
+    </open-files>
 </project-private>
