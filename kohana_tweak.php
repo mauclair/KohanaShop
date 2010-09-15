@@ -43,4 +43,5 @@ class sharedState extends SharedState_Core{}
 class is Extends is_Core{}
 class cacheControl extends CacheControl_Core{}
 class error extends error_Core{}
+class show extends Show_Core{}
 ?>

@@ -7,6 +7,8 @@ A,BODY,INPUT,OPTION,SELECT,TABLE,TD,TR,TEXTAREA {
 
 td {
 	   text-align: left;
+           border: 1px solid #ccccff;
+           padding : 5px;
 	}
 
 body {
@@ -30,9 +32,18 @@ A:Link .bLink,A:Visited .bLink {
         overflow : auto;
 }
 
+table {
+    width : 100%;
+    border: 1px solid #99B3B4;        
+}
+
+.even td {
+    background-color: #E4EBEB;
+}
 
 th {
-	background-color: #444455;
+    padding:5px;
+	background-color: #cccccc;
 
 }
 
@@ -58,6 +69,8 @@ th {
 
 #content {
     overflow : auto;
+    padding: 20px;
     padding-left: 10px;
+
 }
 

@@ -18,15 +18,18 @@ class AdminProducts_Controller extends Administrace_Controller {
     public function seznam() {
         $filters = $this->session->get('administrace/adminProducts.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));
         $this->model->apply_filters($filters);
-        
+        $sort = $this->session->get('administrace/adminProducts.sort',  array('field'=>'product_name','desc'=>'asc'));
+        $this->model->orderBy($sort['field'], $sort['desc']);
         $count = $this->model->fetch()->count();
         $pagination = new Pagination(array('total_items'=>$count,'base_url'=>'administrace/adminProducts/seznam/','uri_segment'=>'strana'));
         $offset = $pagination->sql_offset;
         
         //$this->model->apply_search($string)
-        $this->model->limit($offset,$pagination->items_per_page);        
+        $this->model->limit($offset,$pagination->items_per_page);
+
         $v = View::factory('admin/products/table');
-        $v->set('pagination',$pagination->render());
+        $v->sort = $sort;
+        $v->set('pagination',$pagination->render('digg'));
         $v->filters=$filters;
         $v->vendors = Table_Model::factory('vendor', 'vendor_id')->getForSelect('vendor_id', 'vendor_name' ,true);
         $v->data =  $this->model->fetch();
@@ -38,7 +41,23 @@ class AdminProducts_Controller extends Administrace_Controller {
         if(!$product) url::redirect('administrace/adminProducts');
         $view = View::factory('admin/products/edit');
         $view->set($product);
+        
+        $view->tags = $this->indikace($product['product_id'],false);
+        $view->categories = $this->categories($product['product_id'],false);
+            
         $this->template->content = $view->render();
+    }
+
+    public function indikace($product_id,$set_content = true){
+        $indikace  = new Tag_Model();
+        $res = View::factory('admin/products/tags')->set('tags',$indikace->getTags((int)$product_id))->render();
+        if($set_content)$this->template->content = $res;  else return $res;
+    }
+
+    public function categories($product_id,$set_content = true){
+        $categories = new Category_Model();
+        $res = View::factory('admin/products/categories')->set('categories',$categories->forProduct((int)$product_id))->render();
+        if($set_content)$this->template->content = $res; else return $res;
     }
 
 }

@@ -14,13 +14,13 @@ class Show_Core {
         return $res;
     }
 
-    public static function asort($text,$key){
+    public static function asort($text,$key,$sort=false){
         $res = false;
         $uri = url::current();
-        $sort = Session::instance()->get($uri.'.sort');
+        $sort = Session::instance()->get($uri.'.sort',$sort);
         $desc = 'asc';
         if($sort && isset($sort['field']) && $sort['field']== $key){
-            if($sort['desc']=='ASC'){
+            if(strtoupper($sort['desc'])=='ASC'){
                     $desc = 'desc';
                     $res = '<img src="imgs/icons/asc.png" alt="'.$key.' ASC" />';
                 } else {

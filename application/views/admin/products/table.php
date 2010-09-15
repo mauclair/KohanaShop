@@ -18,13 +18,13 @@
 <?= $pagination?>
 <table>
     <tr>
-        <th><?= Kohana::lang('product.product_name') ?></th>
-        <th><?= Kohana::lang('product.product_publish') ?></th>
-        <th><?= Kohana::lang('product.product_price') ?></th>
+        <th><?= show::asort(Kohana::lang('product.product_name'), 'product_name',$sort)  ?></th>
+        <th><?= show::asort(Kohana::lang('product.product_publish'),'product_publish',$sort) ?></th>
+        <th><?= show::asort(Kohana::lang('product.product_price'),'product_price',$sort) ?></th>
         <th></th>
     </tr>
     <?foreach($data as $product):?>
-    <tr>
+    <tr <?= text::alternate('class="even"','')?>>
         <td><a href="<?= url::site('administrace/adminProducts/edit/'.$product->product_url)?>"><?= $product->product_name?></a></td>
         <td><?= $product->product_publish?></td>
         <td><?= $product->product_price?></td>

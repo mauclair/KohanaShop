@@ -1,7 +1,7 @@
 <?php
  $lang = array(
-     'title'=>'Kategorie',
-     'name_de'     => 'Název(De)',
+     'title'=>'Indikace',
+     'tag_name'     => 'Název',
      'name_cz'     => 'Název(Cz)',
      'name_en'     => 'Název(En)',
      'tags-on-cd' => 'Kategorie na CD',
