@@ -7,7 +7,6 @@ class Vendor_Model extends Table_Model {
     public function __construct() {
         parent::__construct();
 
-    }
-    
+    }    
 }
 ?>

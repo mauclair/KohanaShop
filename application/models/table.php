@@ -94,7 +94,7 @@ class Table_Model extends Model {
      * @return Table_Model
      */
      public static function factory($table='',$id=''){
-         $class = get_class();
+         $class = get_class();         
          return new $class($table,$id);
      }
 
@@ -284,7 +284,7 @@ class Table_Model extends Model {
         $showF  = (!isset($data['showField'])) ? $this->id : $data['showField'];
         $dataF  = (!isset($data['dataField'])) ? $this->id : $data['dataField'];
         $where  = (!isset($data['where'])) ? '' :  ' WHERE '.$data['where'];
-        $orderBy = (!isset($data['orderBy'])) ? ' ORDER BY '.$showF :  ' ORDER BY '.$dataF;
+        $orderBy = (!isset($data['orderBy'])) ? ' ORDER BY '.$showF :  ' ORDER BY '.$data['orderBy'];
         ;
         //TODO: poradne to tady dodelat, razeni, do where pole atd.
 
@@ -297,7 +297,7 @@ class Table_Model extends Model {
         }
         else {
             return ;
-        }
+        }       
         $dbres = $this->db->query($q);
         foreach($dbres->result(false) as $row) {
             $data['data'][$row[$dataF] ]= $row[$showF];
@@ -461,7 +461,7 @@ class Table_Model extends Model {
         if ($where) $data['where'] = $where;
         if ($free_line) {
             $data['data'] = array(''=>$default);
-        }
+        }        
         $this->getData($data);
         return $data['data'];
     }

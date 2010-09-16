@@ -41,6 +41,16 @@ class Administrace_Controller extends My_Controller {
     public function test(){
       
     }
+
+    public function toggle($id,$field,$value=false){
+        $item = $this->model->get((int)$id);
+        if($item && isset($item[$field])){
+            if($value) $item[$field] = $value; else $item[$field]= $item[$field] ? false : true;
+            $this->model->update($item);
+            $this->template->content = json_encode($item);
+        } else $this->template->content = 'ERROR';
+        if(!request::is_ajax()) url::redirect(Session::instance ()->get('current-page'));
+    }
     
 }
 ?>

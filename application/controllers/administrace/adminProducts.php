@@ -41,6 +41,9 @@ class AdminProducts_Controller extends Administrace_Controller {
         if(!$product) url::redirect('administrace/adminProducts');
         $view = View::factory('admin/products/edit');
         $view->set($product);
+        $mVendor  = new Vendor_Model();
+        $view->vendors = $mVendor->getForSelect('vendor_id', 'vendor_name',true);
+        
         
         $view->tags = $this->indikace($product['product_id'],false);
         $view->categories = $this->categories($product['product_id'],false);
@@ -58,6 +61,12 @@ class AdminProducts_Controller extends Administrace_Controller {
         $categories = new Category_Model();
         $res = View::factory('admin/products/categories')->set('categories',$categories->forProduct((int)$product_id))->render();
         if($set_content)$this->template->content = $res; else return $res;
+    }
+
+    public function togglePublish($product_id){
+        $product = $this->model->get((int)$product_id);
+        
+
     }
 
 }

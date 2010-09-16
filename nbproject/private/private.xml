@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/D:/work/web/kohanashop/application/views/admin/products/edit.php</file>
-        <file>file:/D:/work/web/kohanashop/application/i18n/cs_CZ/tag.php</file>
-        <file>file:/D:/work/web/kohanashop/application/controllers/administrace/adminProducts.php</file>
-        <file>file:/D:/work/web/kohanashop/application/models/tag.php</file>
-        <file>file:/D:/work/web/kohanashop/application/helpers/show.php</file>
-        <file>file:/D:/work/web/kohanashop/styles/admin.css</file>
-        <file>file:/D:/work/web/kohanashop/application/models/category.php</file>
-        <file>file:/D:/work/web/kohanashop/application/views/admin/products/categories.php</file>
-    </open-files>
 </project-private>
