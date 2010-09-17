@@ -1,4 +1,11 @@
 <h1><?= $product_name?> - <a href="<?= url::site('produkt/'.$product_url)?>"><?= Kohana::lang('main.show')?></a></h1>
+<div class="togglers">
+    <? $publish_class = $product_publish == 'Y' ? 'button-on' : '';
+           $special_class = $product_special == 'Y' ? 'button-on' : ''
+?>
+    <a href="<?= url::site('administrace/adminProducts/toggle/'.$product_id.'/product_publish')?>" rel="product_publish" class="toggler small-button <?=$publish_class?>"><?= Kohana::lang('product.product_publish')?></a>
+    <a href="<?= url::site('administrace/adminProducts/toggle/'.$product_id.'/product_special')?>" rel="product_special" class="toggler small-button <?=$special_class?>"><?= Kohana::lang('product.product_special')?></a>
+</div>
 <form action="<?= url::site('administrace/adminProducts/update')?>" method="post">
     <fieldset id="product_info">
         <legend><?= Kohana::lang('main.edit')?></legend>
@@ -12,8 +19,12 @@
         <input type="text" name="product_url" id="product_url" value="<?= $product_url?>"  />        
 
         <input type="hidden" id="product_id" name="product_id" value="<?= $product_id?>" />        
-        <label class="float" for="vendor_id"><?= Kohana::lang('product.vendor_id')?></label>
+        <label class="float" for="vendor_id"><?= Kohana::lang('product.vendor_id')?></label>               
         <?= form::dropdown('vendor_id',$vendors, $vendor_id)?>
+        <label class="float" for="product_available_date"><?= Kohana::lang('product.product_available_date')?></label>
+        <input type="date" name="product_available_date" id="product_available_date" size="11" value="<?= $product_available_date?>">
+        <label for="product_expiration_date"><?= Kohana::lang('product.product_expiration_date') ?></label>
+        <input type="date" id="product_expiration_date" name="product_expiration_date" value="<?=$product_expiration_date?>" />
     </fieldset>
     <fieldset>
         <legend>-</legend>
@@ -28,51 +39,13 @@
         <h2><?= Kohana::lang('indication.title')?></h2>
         <?= $tags?>
     </fieldset>
-</form>
-       
     <fieldset>
-        <legend> Stav produktu </legend>
-
-        <label for="product_publish">Publikovat?: </label>
-        <input type="checkbox" name="product_publish" id="product_publish" value="Y"  >
-
-        <label for="product_special">V akci: </label>
-        <input type="checkbox" value="Y" name="product_special" id="product_special"    />
-
-
-
-        <label class="float" for="product_in_stock">Ve skladu: </label>
-        <input type="text" name="product_in_stock" id="product_in_stock" value="1" size="10" />
-
-                  <label class="float" for="product_available_date">Datum dostupnosti(DD.MM.YYYY): </label>
-        <input type="text" name="product_available_date" id="product_available_date" size="11" value="">
-
-
-                  <label class="float" for="product_expiration_date">Expirace(DD.MM.YYYY): </label>
-        <input type="text" name="product_expiration_date" id="product_expiration_date" size="11" value="">
-
-        <label class="float" for="product_discount_id">Sleva: </label>
-        <input type="text" name="product_discount_id" id="product_discount_id" value="0"  />
-
-
+        <legend><?= Kohana::lang('product.product_details')?></legend>
+        <?= $details ?>
     </fieldset>
-
-    <fieldset>
-        <legend></legend>
-        <label class="float" for="product_s_desc">Krátký popis: </label>
-        <textarea id="product_s_desc" name="product_s_desc" cols="50" rows="6" >N-OX   </textarea>
-        <label  class="float" for="product_desc">Popis produktu: </label>
-        <textarea id="product_desc" name="product_desc" cols="50" rows="10" >N-OX</textarea>
-
-        <label class="float" for="contains">Složení: </label>
-        <textarea id="contains" name="contains" cols="50" rows="6" ></textarea>
-
-        <label class="float" for="warning">Upozornění: </label>
-        <textarea id="warning" name="warning" cols="50" rows="6" ></textarea>
-
-        <label class="float" for="aplication">Způsob užívání: </label>
-        <textarea id="aplication" name="aplication" cols="50" rows="6" ></textarea>
-    </fieldset>
+    
+</form>         
+    
 
     <!--  ***  Obrazky ** -->
     <fieldset>
@@ -85,15 +58,18 @@
     </fieldset>
 
 
-    <fieldset>
-        <legend></legend>
-        <input type="hidden" name="product_id" value="2" />
-        <input type="hidden" name="func" value="productUpdate" />
-        <input type="hidden" name="page" value="product/product_display" />
+    
+    <script type="text/javascript" src="scripts/wymeditor/jquery.wymeditor.pack.js"></script>
+    <script type="text/javascript" >
+        $(function(){
+            $(':date').dateinput();
+            $('.wymeditor').wymeditor({
+                lang:'<?=$this->session->get('lang','cs')?>',
+                logoHtml: '',
+                stylesheet: 'styles/paragraphs.css',
+                updateSelector: "#datails-save",
+                updateEvent:    "click"
 
-
-
-        <input type="submit" class="Button"  value="Uložit" onClick="product_s_desc_guardar();product_desc_guardar();" />
-
-              </fieldset>
-
+            });
+        });
+    </script>

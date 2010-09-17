@@ -77,7 +77,3 @@ ALTER TABLE `order_item`  DROP `user_info_id`,  DROP `vendor_id`, DROP cdate, DR
 
 ALTER TABLE `orders` ENGINE = InnoDB;
 ALTER TABLE `order_item` ENGINE = InnoDB;
-
-UPDATE `product` SET product_publish=IF(product_publish='Y',1,IF(product_publish='N',0,product_publish));
-
-

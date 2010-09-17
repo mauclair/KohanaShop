@@ -19,6 +19,7 @@
        'free' => 'Volné',
        'delete'=>'Smazat',
        'delete-confirm' => 'Opravdu chcete tuto položku smazat, jedná se o nevratnou operaci!!!',
+       'confirm-delete' => 'Opravdu chcete tuto položku smazat, jedná se o nevratnou operaci!!!',
        'untagged-only' => 'Skrýt/Zobrazit nezkatagolizované adresáře',
        'toggle-controls-on' => 'Povolit editaci',
        'toggle-controls-off' => 'Zakázat editaci',
@@ -32,6 +33,9 @@
         'failed' => 'Akce se nezdařila',
         'filter' => 'Omezit',
         'administer' => 'Administrace',
+        'yes' => 'Ano',
+        'no' => 'Ne',
+        'dont-care'=>'Nezáleží',
 
    );
 

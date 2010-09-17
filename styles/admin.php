@@ -27,6 +27,7 @@ ob_start();
 
   include('admin.css');
   include('admin_forms.css');
+  include('jqtools.css');
   include('tabs.css');
 
  $c = ob_get_clean();

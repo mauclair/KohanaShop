@@ -45,7 +45,7 @@ class Administrace_Controller extends My_Controller {
     public function toggle($id,$field,$value=false){
         $item = $this->model->get((int)$id);
         if($item && isset($item[$field])){
-            if($value) $item[$field] = $value; else $item[$field]= $item[$field] ? false : true;
+            if($value) $item[$field] = $value; else $item[$field] = $item[$field]=='Y' ? 'N' : 'Y';
             $this->model->update($item);
             $this->template->content = json_encode($item);
         } else $this->template->content = 'ERROR';

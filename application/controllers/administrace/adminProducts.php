@@ -16,16 +16,18 @@ class AdminProducts_Controller extends Administrace_Controller {
     }
 
     public function seznam() {
-        $filters = $this->session->get('administrace/adminProducts.filters',array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false));
+        $default_filter = array('product_publish'=>false,'vendor_id'=>false,'category_id'=>false,'indikace_id'=>false,'product_special'=>false);
+        $filters = $this->session->get('administrace/adminProducts.filters',$default_filter);
         $this->model->apply_filters($filters);
         $sort = $this->session->get('administrace/adminProducts.sort',  array('field'=>'product_name','desc'=>'asc'));
         $this->model->orderBy($sort['field'], $sort['desc']);
         $count = $this->model->fetch()->count();
         $pagination = new Pagination(array('total_items'=>$count,'base_url'=>'administrace/adminProducts/seznam/','uri_segment'=>'strana'));
         $offset = $pagination->sql_offset;
-        
+
         //$this->model->apply_search($string)
         $this->model->limit($offset,$pagination->items_per_page);
+        
 
         $v = View::factory('admin/products/table');
         $v->sort = $sort;
@@ -44,7 +46,7 @@ class AdminProducts_Controller extends Administrace_Controller {
         $mVendor  = new Vendor_Model();
         $view->vendors = $mVendor->getForSelect('vendor_id', 'vendor_name',true);
         
-        
+        $view->details = $this->product_details($product['product_id'],false);       
         $view->tags = $this->indikace($product['product_id'],false);
         $view->categories = $this->categories($product['product_id'],false);
             
@@ -62,6 +64,15 @@ class AdminProducts_Controller extends Administrace_Controller {
         $res = View::factory('admin/products/categories')->set('categories',$categories->forProduct((int)$product_id))->render();
         if($set_content)$this->template->content = $res; else return $res;
     }
+    
+    public function product_details($product_id,$set_content = true){
+        $details = new Product_details_Model();
+        $details->where('product_id',$product_id);
+        $res = View::factory('admin/products/details')->set('details',$details->fetch())->render();
+        if($set_content)$this->template->content = $res; else return $res;
+    }
+
+
 
     public function togglePublish($product_id){
         $product = $this->model->get((int)$product_id);

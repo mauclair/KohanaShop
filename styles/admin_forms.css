@@ -32,7 +32,7 @@ form label {
         
 }
 
-form input, form select {
+form input, form select, form date {
 	display: block;
 	border: 1px solid #99b3b4;
         width: 220px;

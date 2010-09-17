@@ -74,3 +74,20 @@ th {
 
 }
 
+.small-button {
+    display: inline-block;
+    font-size : 10px;
+    background-color: #aaa;
+    border : 1px solid #666;
+    padding:2px;
+}
+
+a.small-button {
+    color : #000;
+    text-decoration: none;
+}
+
+.button-on {
+    background-color: #99ff66;
+
+}

@@ -1,6 +1,6 @@
 /*
  * WYMeditor : what you see is What You Mean web-based editor
- * Copyright (c) 2008 Jean-Francois Hovinne, http://www.wymeditor.org/
+ * Copyright (c) 2005 - 2009 Jean-Francois Hovinne, http://www.wymeditor.org/
  * Dual licensed under the MIT (MIT-license.txt)
  * and GPL (GPL-license.txt) licenses.
  *
@@ -26,13 +26,13 @@ function WymTidy(options, wym) {
 
   options = jQuery.extend({
 
-    sUrl:          "wymeditor/plugins/tidy/tidy.php",
-    sButtonHtml:   "<li class='wym_tools_tidy'>"
-                 + "<a name='CleanUp' href='#'"
-                 + " style='background-image:"
-                 + " url(wymeditor/plugins/tidy/wand.png)'>"
-                 + "Clean up HTML"
-                 + "</a></li>",
+    sUrl:            wym._options.basePath + "plugins/tidy/tidy.php",
+    sButtonHtml:     "<li class='wym_tools_tidy'>"
+                   + "<a name='CleanUp' href='#'"
+                   + " style='background-image:"
+                   + " url(" + wym._options.basePath + "plugins/tidy/wand.png)'>"
+                   + "Clean up HTML"
+                   + "</a></li>",
     
     sButtonSelector: "li.wym_tools_tidy a"
     

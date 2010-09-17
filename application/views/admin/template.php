@@ -38,12 +38,6 @@
             <div><?= date('Y',time())?> &copy; bylinářství.cz</div>                    
             <div class="center" ></div>
         </div>
-        <script type="text/javascript">
-            $(function(){
-                $('.confirm').click(function(){
-                    return(confirm($(this).attr('title')));
-                });
-            });
-</script>
+        <script type="text/javascript" src="scripts/administration.js"></script>
      </body>
 </html>
