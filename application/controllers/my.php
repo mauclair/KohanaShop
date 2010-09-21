@@ -211,7 +211,9 @@ class My_Controller extends Crud_Controller {
 
     }
 
-    
+    public function goBack(){
+        url::redirect($this->session->get('current-page'));
+    }
 
 }
 

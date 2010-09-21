@@ -16,5 +16,6 @@
 
      'product_publish_value'=> array('Y'=>'Zobrazovat','N'=>'Nezobrazovat'),
 
+     'must-be-in-category' => 'Produkt musí být zařazen v nějaké kategorii. Kategorie nemohla být odebrána!',
  )
 ?>

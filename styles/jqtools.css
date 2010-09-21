@@ -15,8 +15,10 @@
 	border:1px solid #ccc;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
+        border-radius:5px;
 	-moz-box-shadow: 0 0 15px #666;
 	-webkit-box-shadow: 0 0 15px #666;
+        box-shadow: 0 0 15px #666;
 }
 
 /* head. contains title, prev/next month controls and possible month/year selectors */
@@ -97,6 +99,7 @@
 	color:#666;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
+        border-radius:3px;
 }
 
 /* different states */
@@ -137,3 +140,71 @@ a.caldisabled {
 	background-color:#333;
 	color:#fff;
 }
+
+/*****************************************
+
+                TABS
+
+*****************************************/
+
+/* root element for tabs  */
+ul.tabs {
+	margin:0 !important;
+	padding:0;
+	height:30px;
+	border-bottom:1px solid #666;
+}
+
+/* single tab */
+ul.tabs li {
+	float:left;
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a {
+	float:left;
+	font-size:13px;
+	display:block;
+	padding:5px 30px;
+	text-decoration:none;
+	border:1px solid #666;
+	border-bottom:0px;
+	height:18px;
+	background-color:#efefef;
+	color:#777;
+	margin-right:2px;
+	position:relative;
+	top:1px;
+	outline:0;
+	-moz-border-radius:4px 4px 0 0;
+        border-radius:4px 4px 0 0;
+}
+
+ul.tabs a:hover {
+	background-color:#F7F7F7;
+	color:#333;
+}
+
+/* selected tab */
+ul.tabs a.current {
+	background-color:#ddd;
+	border-bottom:1px solid #ddd;
+	color:#000;
+	cursor:default;
+}
+
+
+/* tab pane */
+.panes > div {
+	display:none;
+	border:1px solid #666;
+	border-width:0 1px 1px 1px;
+	min-height:150px;
+	padding:15px 20px;
+	background-color:#ddd;
+}
+
+
