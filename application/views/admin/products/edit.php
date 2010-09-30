@@ -26,23 +26,17 @@
         <input type="date" name="product_available_date" id="product_available_date" size="11" value="<?= $product_available_date ?>" />
         <label for="product_expiration_date"><?= Kohana::lang('product.product_expiration_date') ?></label>
         <input type="date" id="product_expiration_date" name="product_expiration_date" value="<?= $product_expiration_date ?>" />
-    </fieldset>
-    <fieldset>
-        <legend>-</legend>
-        <input type="submit" value="<?= Kohana::lang('main.save') ?>" />
-    </fieldset>
+        <input type="submit" class="button button-save" value="<?= Kohana::lang('main.save') ?>" />
+    </fieldset>    
 </form>
 <ul class="tabs">
-    <li><a href="#"><?= Kohana::lang('product.categories') ?></a></li>
-    <li><a href="#"><?= Kohana::lang('product.indications') ?></a></li>
-    <li><a href="#"><?= Kohana::lang('product.details') ?></a></li>
-    <li><a href="#"><?= Kohana::lang('product.images') ?></a></li>
+    <li><a href="administrace/adminProducts/categories/<?=$product_id?>"><?= Kohana::lang('product.categories') ?></a></li>
+    <li><a href="administrace/adminProducts/indikace/<?=$product_id?>"><?= Kohana::lang('product.tags') ?></a></li>
+    <li><a href="administrace/adminProducts/details/<?=$product_id?>"><?= Kohana::lang('product.details') ?></a></li>
+    <li><a href="administrace/adminProducts/images/<?=$product_id?>"><?= Kohana::lang('product.images') ?></a></li>
 </ul>
 <div class="panes">
-    <div><?= $categories ?></div>
-    <div><?= $tags ?></div>
-    <div><?= $details ?></div>
-    <div><?= $images?></div>
+    <div style="display:block"><?= $categories ?></div>
 </div>
 
 <script type="text/javascript" src="scripts/wymeditor/jquery.wymeditor.pack.js"></script>
@@ -56,6 +50,6 @@
             updateSelector: ".wymSaver",
             updateEvent:    "click"
         });
-        $('.tabs').tabs('.panes>div');
+        $('.tabs').tabs('.panes>div',{history:true, effect:'ajax'});
     });
 </script>

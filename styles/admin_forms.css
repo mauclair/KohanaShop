@@ -55,3 +55,8 @@ form textarea {
 }
 
 form br {clear:left;}
+
+input.button {
+    width : auto;
+    border-color :  #666;    
+}

@@ -3,6 +3,6 @@
         'title'=>'Informace o produktu',
         'contains' => 'Obsahuje',
         'warning' => 'Upozornění',
-        'aplication' => 'Užívání'
+        'application' => 'Užívání'
  )
 ?>

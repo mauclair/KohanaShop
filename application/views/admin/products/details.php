@@ -9,7 +9,7 @@
         <textarea id="aplication" cols="40" rows="10" class="wymeditor" name="aplication"><?= $detail->aplication?></textarea>
         <input type="hidden" id="id" name="id" value="<?= $detail->id?>" />
         <input type="hidden" id="product_id" name="product_id" value="<?= $detail->product_id?>" />
-        <input type="submit" class="wymSaver" value="<?= Kohana::lang('main.save')?>">
+        <input type="submit" class="wymSaver button-save button" value="<?= Kohana::lang('main.save')?>">
     </div>
 <?  endforeach;?>
 </form>

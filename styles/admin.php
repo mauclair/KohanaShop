@@ -20,7 +20,7 @@ ob_start();
   include('product4.css');
   include('left_menu.css');
 
-  include('classes.css');
+  
   include('poradna.css');
   include('bylinky.css');
   include('caj.css');*/
@@ -29,6 +29,7 @@ ob_start();
   include('admin_forms.css');
   include('jqtools.css');
   include('tabs.css');
+  include('classes.css');
 
  $c = ob_get_clean();
 

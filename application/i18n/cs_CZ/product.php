@@ -16,6 +16,14 @@
 
      'product_publish_value'=> array('Y'=>'Zobrazovat','N'=>'Nezobrazovat'),
 
+     'tags'=>'Indikace',
+     'categories'=>'Kategorie',
+     'images'=> 'Images',
+     'prices' => 'Ceny',
+     'details' => 'Podrobnosti',
+     'attributes' => 'Atributy',
+
      'must-be-in-category' => 'Produkt musí být zařazen v nějaké kategorii. Kategorie nemohla být odebrána!',
+
  )
 ?>

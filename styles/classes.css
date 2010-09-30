@@ -24,9 +24,29 @@
      display: inline-block;     
      line-height : 30px;
      border: 1px solid #999;
-     background-color: #bbb;
+     background-color: #eee;
      padding: 10px;
      margin: 1em;
      margin-left: 0;
+     border-radius : 3px;
+     
+}
+
+.button-delete, .button-save, .button-add {
+    background-repeat: no-repeat;
+    padding-left : 20px;
+    background-position: 3px center;
+}
+
+.button-delete {
+    background-image: url('../imgs/icons/cancel_16.png');
+}
+
+.button-save {
+    background-image: url('../imgs/icons/save_16.png');    
+}
+
+.button-add{
+    background-image: url('../imgs/icons/add_16.png');
 }
 
