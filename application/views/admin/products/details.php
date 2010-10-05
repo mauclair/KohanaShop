@@ -13,3 +13,13 @@
     </div>
 <?  endforeach;?>
 </form>
+
+<script type="text/javascript">
+       $('.wymeditor').wymeditor({
+            lang:'<?= $this->session->get('lang', 'cs') ?>',
+            logoHtml: '',
+            stylesheet: 'styles/paragraphs.css',
+            updateSelector: ".wymSaver",
+            updateEvent:    "click"
+        });
+</script>

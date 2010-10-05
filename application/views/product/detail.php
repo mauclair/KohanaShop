@@ -58,7 +58,7 @@
     <p><?=  $contains; ?></p>
     <h2><?= Kohana::lang('product_details.warning') ?></h2>
     <p><?=  $warning ?></p>
-    <h2><?= Kohana::lang('product_details.aplication') ?></h2>
+    <h2><?= Kohana::lang('product_details.application') ?></h2>
     <p><?= $aplication ?></p>
  
 

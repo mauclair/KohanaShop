@@ -1,8 +1,11 @@
 <?php
-    $sortable = (isset($sortable)) ? $sortable: array() ;
+    
     $fields = (isset($fields)) ? $fields: array() ;
-    $renderers = (isset($renderers)) ? $renderers : array();
+    $sortable = (isset($sortable)) ? $sortable: $fields ;
     $pagination = isset($pagination) ? $pagination : '';
+    $sort = (isset($sort))?$sort : array();
+    
+   // $viewHeader = isset($viewHeader) ? $viewheader  : View::factory('admin/generic/header')->set('fields',$fields)->set('sortable',$sortable);
 
     //Sanitize fields array to satisfy  $field=>$localized_name patter
     foreach($fields as $field=>$name){
@@ -11,6 +14,8 @@
             $fields[$name]  = Kohana::lang("$modelname.$name");
         }
     }
+
+    $viewRow = isset($viewRow) ? $viewRow  : View::factory('admin/generic/row')->set('fields',$fields);
     
 
 ?>
@@ -21,24 +26,16 @@
     <thead>
         <tr>
             <?foreach($fields as $field=>$name):?>
-            <th><?= (in_array($field, $sortable))? show::asort($name,$field,true) : $name; ?></th>
+            <th><?= (in_array($field, $sortable))? show::asort($name,$field,$sort) : $name; ?></th>
             <?endforeach;?>
+            <th></th>
         </tr>
-        <?foreach($data as $row):
+        <?foreach($data as $row){
             $row = (array)$row;
-         ?>
-        <tr <?= text::alternate('','class="even"')?>>
-            <? foreach($fields as $field=>$name): ?>
-            <td><?
-                if(isset($renderers[$field])){
-                    echo $renderers[$field]->set($row)->render();
-                } else {
-                   echo $row[$field];
-                }
-            ?></td>
-            <? endforeach; ?>
-        </tr>
-        <?endforeach;?>
+            echo $viewRow->set($row)->render();
+         }?>
+        
+        
     </thead>
 </table>
 

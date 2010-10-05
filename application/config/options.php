@@ -2,6 +2,7 @@
 $config = array(
         'site-name' =>'Bylinářství.cz',        
         'keywords' => '',
-        'description'=> '',        
+        'description'=> '',
+        'date-format' => 'd.m.Y H:i',
     );
 ?>

@@ -32,7 +32,7 @@
 <ul class="tabs">
     <li><a href="administrace/adminProducts/categories/<?=$product_id?>"><?= Kohana::lang('product.categories') ?></a></li>
     <li><a href="administrace/adminProducts/indikace/<?=$product_id?>"><?= Kohana::lang('product.tags') ?></a></li>
-    <li><a href="administrace/adminProducts/details/<?=$product_id?>"><?= Kohana::lang('product.details') ?></a></li>
+    <li><a href="administrace/adminProducts/product_details/<?=$product_id?>"><?= Kohana::lang('product.details') ?></a></li>
     <li><a href="administrace/adminProducts/images/<?=$product_id?>"><?= Kohana::lang('product.images') ?></a></li>
 </ul>
 <div class="panes">
@@ -42,14 +42,7 @@
 <script type="text/javascript" src="scripts/wymeditor/jquery.wymeditor.pack.js"></script>
 <script type="text/javascript" >
     $(function(){
-        $(':date').dateinput();
-        $('.wymeditor').wymeditor({
-            lang:'<?= $this->session->get('lang', 'cs') ?>',
-            logoHtml: '',
-            stylesheet: 'styles/paragraphs.css',
-            updateSelector: ".wymSaver",
-            updateEvent:    "click"
-        });
+        $(':date').dateinput();     
         $('.tabs').tabs('.panes>div',{history:true, effect:'ajax'});
     });
 </script>

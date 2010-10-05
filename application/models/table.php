@@ -110,8 +110,8 @@ class Table_Model extends Model {
         parent::__construct();
         $this->where = new condition();
         $this->having = new condition();
-        $q = "SET  SESSION group_concat_max_len = 40840";
-        $this->db->query($q);
+       // $q = "SET  SESSION group_concat_max_len = 40840";
+        //$this->db->query($q);
     }
 
     public function getTable($offset=-1, $count=-1) {
