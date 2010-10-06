@@ -35,7 +35,8 @@
                 if(self::$cachable){
                     $lang = Session::instance()->get('lang');
                     if(!self::$cache || !isset(self::$cache[$lang])) self::init_cache();
-                    if(isset(self::$cache[$lang][$key])) return self::$cache[$lang][$key]->value;
+                    
+                    if(isset(self::$cache[$lang][$key])) return self::$cache[$lang][$key];
                     
                 }
 
@@ -109,7 +110,11 @@
                     $vals =  $cacheM->get($cache_key);
                     if(!$vals){
                         $om = new Options_Model();
-                        $vals = $om->fetch();
+                        $dbres = $om->fetch();
+
+                        foreach($dbres as $row){
+                            $vals[$row->key]=$row->value;
+                        }
                         $cacheM->set($cache_key, $vals, array('options',$lang));
                     }
                     self::$cache[$lang] = $vals;
