@@ -30,6 +30,7 @@ ob_start();
   include('jqtools.css');
   include('tabs.css');
   include('classes.css');
+  include('grids.css');
 
  $c = ob_get_clean();
 

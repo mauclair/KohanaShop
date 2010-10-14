@@ -50,3 +50,6 @@
     background-image: url('../imgs/icons/add_16.png');
 }
 
+.float-right {
+    float: right;
+}

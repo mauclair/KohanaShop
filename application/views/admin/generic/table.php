@@ -20,7 +20,7 @@
 
 ?>
 <?if(isset($title)){?><h1><?=$title?></h1><?}?>
-
+<?= (isset($prepend))? $prepend:'' ?>
 <?= $pagination?>
 <table>
     <thead>
@@ -40,3 +40,4 @@
 </table>
 
 <?= $pagination?>
+<?= (isset($append))? $append:'' ?>

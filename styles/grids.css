@@ -1,0 +1,26 @@
+.cols1, .cols2, .cols3 {
+    margin : 0px 10px 0px 10px;
+    padding:0;
+    float : left;
+
+}
+
+.cols1 {
+     width : 200px;
+}
+
+.cols2 {
+    width : 400px;
+}
+
+.cols3 {
+    width : 600px;
+}
+
+.first {
+    margin-left : 0px;
+}
+
+.last {
+    margin-right: 0px;
+}

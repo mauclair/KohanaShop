@@ -4,5 +4,6 @@ $config = array(
         'keywords' => '',
         'description'=> '',
         'date-format' => 'd.m.Y H:i',
+        
     );
 ?>

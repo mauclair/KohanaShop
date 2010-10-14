@@ -1,13 +1,12 @@
 <h1><?= Kohana::lang('order.order_number') ?>: <?= $order_number ?></h1>
-
 <table>
     <tr>
         <td>
-            <h2><?= Kohana::lang('user.billing-address') ?></h2>
+            <strong><?= Kohana::lang('user.billing-address') ?></strong>
             <?= $billing_address ?>
         </td>
         <td>
-            <h2><?= Kohana::lang('user.shipping-address') ?></h2>
+            <strong><?= Kohana::lang('user.shipping-address') ?></strong>
             <?= $shipping_address ?>
         </td>
     </tr>
@@ -25,7 +24,7 @@
                 $sums['sum'] += $item->product_item_price;
                 $sums['count'] += $item->product_quantity;
     ?>
-                <tr>
+    <tr <?= text::alternate('','class="even"')?>>
                     <td><a href="<?= url::site('produkt/' . $item->product_url) ?>"><?= $item->product_name ?></a></td>
                     <td><?= $item->product_quantity ?></td>
                     <td><?= $item->product_taxes_value ?>%</td>
@@ -50,10 +49,8 @@
                 </tr>
     <? if ($note): ?>
                     <tr><td colspan="2">
-                        <h2><?= Kohana::lang('pokladna.poznamka') ?></h2>
-                        <p><?= $note ?></p>
-                    </td></tr>
+                            <h2><?= Kohana::lang('pokladna.poznamka') ?></h2>
+                            <p><?= $note ?></p>
+                        </td></tr>
     <? endif; ?>
 </table>
-
-

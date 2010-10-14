@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/D:/work/web/kohanaShop/application/views/admin/orders/row.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/views/admin/orders/status.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/config/main.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/controllers/administrace/adminOrders.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/i18n/cs_CZ/order.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/views/admin/orders/detail.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/controllers/ucet.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/controllers/uzivatel.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/views/admin/orders/order.php</file>
+        <file>file:/D:/work/web/kohanaShop/styles/grids.css</file>
+        <file>file:/D:/work/web/kohanaShop/styles/admin.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/i18n/cs_CZ/product_price.php</file>
+        <file>file:/D:/work/web/kohanaShop/application/views/admin/orders/controls.php</file>
+    </open-files>
 </project-private>

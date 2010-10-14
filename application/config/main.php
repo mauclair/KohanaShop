@@ -10,5 +10,6 @@
         'default-shopper-group' => 1,
         'date-format' => 'd.m.Y',
         'default-currency-format' => '%.1f0 Kč',
+        'order-status-path' => array('P','C','S'),
     );
 ?>

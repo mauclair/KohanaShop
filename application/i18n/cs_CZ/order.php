@@ -1,11 +1,12 @@
 <?php
     $lang = array(
         'title'=> 'Objednávky',
-        'number'=>'Číslo',
+        'order_number'=>'Číslo',
         'cdate'=>'Přijata',
         'mdate'=>'Poslední změna',
         'prize'=>'Cena',
-        'status'=>'Stav',
+        'order_status'=>'Stav',
+        'order_subtotal'=>'Stav',
         'status_str' => array(
             'X' => 'Zrušena',
             'C'=>'Potvrzena',
