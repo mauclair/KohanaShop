@@ -77,3 +77,8 @@ ALTER TABLE `order_item`  DROP `user_info_id`,  DROP `vendor_id`, DROP cdate, DR
 
 ALTER TABLE `orders` ENGINE = InnoDB;
 ALTER TABLE `order_item` ENGINE = InnoDB;
+
+ALTER TABLE `order_status`
+  DROP `list_order`,
+  DROP `vendor_id`,
+  ADD `order_status_mail` TEXT NOT NULL;

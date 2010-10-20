@@ -19,5 +19,7 @@ $(function(){
            $('.confirm').click(function(){
                     return(confirm($(this).attr('title')));
            });
+
+           
            
 });

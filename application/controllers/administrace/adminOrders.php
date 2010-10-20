@@ -46,7 +46,8 @@ class adminOrders_Controller extends Administrace_Controller {
         if($order['shipping_address']) $order['shipping_address'] = View::factory('user_info/read_only_html')->set($order['shipping_address'])->render();
         $view = View::factory('admin/orders/detail')->set($order);
         $view->order = View::factory('admin/orders/order')->set($order);
-        $view->controls = 'CONTROLS';
+        $status_model = new Order_status_Model();
+        $view->controls = View::factory('admin/orders/controls')->set('statuses',$status_model->fetch())->set($order);
         $this->template->content =$view->render();
     }
 }
