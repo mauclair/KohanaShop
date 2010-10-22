@@ -6,6 +6,7 @@
      protected $parent_language = 'cz';
      public function __construct() {
          parent::__construct();
+         $this->checkboxes = array('send_email','append_order');
 
 
     }

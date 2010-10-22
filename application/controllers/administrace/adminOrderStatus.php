@@ -7,6 +7,7 @@ class AdminOrderStatus_Controller extends Administrace_Controller {
     public function __construct() {
         parent::__construct();
         $this->model = new Order_status_Model();
+        $this->redirect_to = $this->session->get('current-page');
     }
 
     public function index(){
@@ -23,6 +24,9 @@ class AdminOrderStatus_Controller extends Administrace_Controller {
     public function edit($id){
         $data = $this->model->get($id);
         if(!$data) url::redirect('administrace/adminOrderStatus');
+        $view = View::factory('admin/orders/status_edit');
+        $view->set($data);
+        $this->template->content = $view->render();
         
     }
 }

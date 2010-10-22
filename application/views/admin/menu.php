@@ -9,4 +9,6 @@
     </li>
     
     <li><?= Kohana::lang('shipping.title')?></li>
+    
+    <li><a <?= is::href('administrace/adminOverview')?> ><?= Kohana::lang('overview.title')?></a></li>
 </ul>

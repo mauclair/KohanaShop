@@ -44,6 +44,11 @@ form input, form select, form date {
 	outline:none;
 }
 
+form input[type=checkbox]{
+    width : 16px;
+    height: 16px;
+}
+
 form select {	
 	display: block;
 }

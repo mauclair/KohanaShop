@@ -83,6 +83,11 @@ class Table_Model extends Model {
      * @var array definiton of the file processing
      */
     public $files = array();
+/**
+ * List of checkboxes. Checkboxis will be parsed on update and add and set to 0 if key not exists
+ * @var array
+ */
+    public $checkboxes = array();
 
     /**
      *
@@ -330,18 +335,25 @@ class Table_Model extends Model {
         if (!isset($dat[$idkey])) {
             return false;
         }
+        // set checkboxes to 0
+        foreach($this->checkboxes as $field) {
+            if(!isset($dat[$field])) $dat[$field] = 0;
+        }
+        
+
         $id = $dat[$idkey];
         unset($dat[$idkey]);
         unset($this->validation[$idkey]);
         if (!$dat)
             return false;
         $d = array_merge($d, $dat);
+        
         $this->db->update($this->table, $dat, array($idkey => $id));
         return true;
     }
 
     public function add(&$d) {
-        $dat = array_intersect_key($d, $this->db->list_fields($this->table));
+        $dat = array_intersect_key($d, $this->db->list_fields($this->table));     
 
         if (count($this->autoUrl) > 0)
             foreach ($this->autoUrl as $k => $v)

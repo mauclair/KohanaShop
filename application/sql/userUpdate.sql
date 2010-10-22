@@ -81,4 +81,7 @@ ALTER TABLE `order_item` ENGINE = InnoDB;
 ALTER TABLE `order_status`
   DROP `list_order`,
   DROP `vendor_id`,
-  ADD `order_status_mail` TEXT NOT NULL;
+  ADD `order_status_mail` TEXT NOT NULL,
+  ADD `send_email` TINYINT NOT NULL,
+  ADD `append_order` TINYINT NOT NULL
+;
