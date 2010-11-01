@@ -17,6 +17,7 @@ class Administrace_Controller extends My_Controller {
         if(!Perms_Core::allowed()) url::redirect('uzivatel/prihlasit');
         $logged = User_Model::isLogged();
         $this->template->menu = View::factory('admin/menu');
+        $this->redirect_to = Session::instance()->get('current-page');
     }
    
 

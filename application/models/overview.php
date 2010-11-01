@@ -59,15 +59,12 @@ class Overview_Model extends Model {
 
         // data part
         foreach ($y as $field => $value) {
-            $areas[$field] = new line();
+            $areas[$field] = new bar();
             $values[$field] = array();
             if (!isset($value['color'])) $value['color'] = '#666';
             $areas[$field]->colour($value['color']);
             if(isset($value['transparent'])) $areas[$field]->set_alpha ($value['tramsparent']);
-            if(isset($value['key'])) $areas[$field]->set_key($value['key'],10);
-
-            
-                
+            if(isset($value['key'])) $areas[$field]->set_key($value['key'],10);                           
         }
         //prepare data
         $y_max = 0;
