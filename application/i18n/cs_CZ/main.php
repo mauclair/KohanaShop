@@ -36,6 +36,7 @@
         'yes' => 'Ano',
         'no' => 'Ne',
         'dont-care'=>'Nezáleží',
+        'months'=>  array('Leden', 'Únor', 'Březed', 'Duben', 'Květen', 'Červen', 'Červenec', 'Srpen',  'Září', 'Říjen', 'Listopad', 'Prosinec')
 
    );
 

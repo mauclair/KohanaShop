@@ -48,7 +48,7 @@ class Overview_Model extends Model {
      * @param string $x - field for X labels
      * @param array $y syntax 'field'=>options where options are [color,transparent,key]
      */
-    public function chart($data, $x, $y) {
+    public function chart($data, $x, $y, $hooks = null) {
         include_once Kohana::find_file('vendor', 'php-ofc-library/open-flash-chart');
         $g = new open_flash_chart();
         $areas = array();
@@ -71,12 +71,17 @@ class Overview_Model extends Model {
         foreach ($data as $r) {
             $r = (array) $r;
             foreach ($y as $field => $v) {
-                if (isset($r[$field])){                    
-                    if($y_max < $r[$field]) $y_max = (float)$r[$field];
-                    $values[$field][] = (float)$r[$field];
+                if (isset($r[$field])){
+                    $value = (float)$r[$field];
+                    if(isset($hooks[$field])) $value = call_user_func ($hoohs[$field],$value);
+                    if($y_max < $r[$field]) $y_max = $value;
+                    $values[$field][] = $value;
                 }
             }
-            $labels[] = (string)$r[$x];
+            $value = $r[$x];
+            if(isset($hooks[$x])) $value = call_user_func($hooks[$x], $value);
+
+            $labels[] = $value;
         }
         
         // setting the data
@@ -118,6 +123,10 @@ class Overview_Model extends Model {
 
 
         return $g->toString();
+    }
+
+    public function formatMonth($month){
+        return Kohana::lang('main.months.'.((int)substr($month , 4)-1)).' '.substr($month,0, 4);
     }
 
 }

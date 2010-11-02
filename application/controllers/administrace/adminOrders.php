@@ -25,7 +25,7 @@ class adminOrders_Controller extends Administrace_Controller {
         $filters  = $this->session->get('administrace/adminOrders.filters',  array());
         $this->model->apply_filters($filters);
         $view = new View('admin/generic/table');
-        $view->modelname = 'order';
+        $view->langfile = 'order';
         $view->prepend = View::factory('admin/generic/filters')
                             ->set('names',  array('order_status'=>  Kohana::lang('order.order_status')))
                             ->set('filters',  array('order_status'=> array('')+Kohana::lang('order.status_str')))

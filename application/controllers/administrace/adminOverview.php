@@ -27,7 +27,8 @@ class AdminOverview_Controller extends Administrace_Controller {
                      'revenue'=>array('color'=>'#aaa','key'=>Kohana::lang('orders.ordered')),
                      'revenue_S'=>  array('color'=>'#f06060','key'=>  Kohana::lang('orders.shipped')),
                      'shipped_shipping'=>  array('color'=>'#60f060','key'=>  Kohana::lang('orders.shipped_shipping'))
-                     )
+                     ),
+                     array('month'=>  array($this->model,'formatMonth'))
                  );
      }
 

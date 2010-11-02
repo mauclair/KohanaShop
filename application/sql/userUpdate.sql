@@ -39,9 +39,11 @@ ALTER TABLE `user_info` DROP `last_name` ,DROP `first_name` ,DROP `middle_name`,
 
 ALTER TABLE `orders` DROP INDEX `user_id`;
 UPDATE orders SET user_id = (SELECT user_id FROM user WHERE old_user_id = orders.user_id LIMIT 1);
-UPDATE orders SET billing_address_id = (SELECT user_info_id FROM user_info WHERE orders.user_id NOT NULL AND user_info.user_id = orders.user_id AND address_type = 'BT')
+ALTER TABLE `orders`  DROP `vendor_id`,  ADD  `billing_address_id` INT( 11 ) NULL DEFAULT NULL , ADD  `shipping_address_id` INT( 11 ) NULL DEFAULT NULL ,
+CHANGE `ship_method_id` `shipping_id` INT( 11 ) NULL DEFAULT NULL;
+UPDATE orders SET billing_address_id = (SELECT user_info_id FROM user_info WHERE orders.user_id IS NOT NULL AND user_info.user_id = orders.user_id AND address_type = 'BT' LIMIT 1);
 
-ALTER TABLE `orders` CHANGE `user_id` `user_id` INT NOT NULL, DROP  user_id;
+ALTER TABLE `orders` CHANGE `user_id` `user_id` INT NOT NULL;
 
 
 
@@ -56,7 +58,7 @@ CREATE TABLE `log_login` (
 
 ALTER TABLE `indikace` CHANGE `indikace_cze` `indikace_name` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
 ALTER TABLE `indikace` CHANGE `indikace_sk` `indikace_url` VARCHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL;
-ALTER TABLE `indikace_joined` CHANGE `i_refs_cze` `i_refs` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL, `indikace_joined` DROP `i_refs_sk`;
+ALTER TABLE `indikace_joined` CHANGE `i_refs_cze` `i_refs` TEXT CHARACTER SET utf8 COLLATE utf8_czech_ci NOT NULL,  DROP `i_refs_sk`;
 
 
 ALTER TABLE `clanky` ADD `clanky_url` VARCHAR( 255 ) NOT NULL AFTER `title`;
@@ -67,11 +69,10 @@ ALTER TABLE `payment_method`  DROP `vendor_id`,  DROP `list_order`,  DROP `payme
 ALTER TABLE `payment_method` CHANGE `payment_method_discount` `payment_cost` DECIMAL( 10, 2 );
 
 
-ALTER TABLE `vendor`  DROP `contact_last_name`,  DROP `contact_first_name`,  DROP `contact_middle_name`,  DROP `contact_title`,  DROP `contact_phone_1`,  DROP `contact_phone_2`,  DROP `contact_fax`,  DROP `contact_email`,  DROP `vendor_phone`,  DROP `vendor_address_1`,  DROP `vendor_address_2`,  DROP `vendor_city`,  DROP `vendor_state`,  DROP `vendor_country`,  DROP `vendor_zip`,  DROP `vendor_store_name`,  DROP `vendor_store_desc`,  DROP `vendor_category_id`,  DROP `vendor_thumb_image`,  DROP `vendor_full_image`,  DROP `vendor_currency`,  DROP `cdate`,  DROP `mdate`,  DROP `vendor_image_path`
+ALTER TABLE `vendor`  DROP `contact_last_name`,  DROP `contact_first_name`,  DROP `contact_middle_name`,  DROP `contact_title`,  DROP `contact_phone_1`,  DROP `contact_phone_2`,  DROP `contact_fax`,  DROP `contact_email`,  DROP `vendor_phone`,  DROP `vendor_address_1`,  DROP `vendor_address_2`,  DROP `vendor_city`,  DROP `vendor_state`,  DROP `vendor_country`,  DROP `vendor_zip`,  DROP `vendor_store_name`,  DROP `vendor_store_desc`,  DROP `vendor_category_id`,  DROP `vendor_thumb_image`,  DROP `vendor_full_image`,  DROP `vendor_currency`,  DROP `cdate`,  DROP `mdate`,  DROP `vendor_image_path`,
  ADD `vendor_url` VARCHAR( 255 ) NOT NULL , ADD `vendor_desc` TEXT NOT NULL;
 
-ALTER TABLE `orders`  DROP `vendor_id`,  ADD  `billing_address_id` INT( 11 ) NULL DEFAULT NULL , ADD  `shipping_address_id` INT( 11 ) NULL DEFAULT NULL ,
-CHANGE `ship_method_id` `shipping_id` INT( 11 ) NULL DEFAULT NULL;
+
 
 ALTER TABLE `order_item`  DROP `user_info_id`,  DROP `vendor_id`, DROP cdate, DROP mdate, DROP `order_item_currency` , DROP `order_status`, ADD `product_price_id` INT NOT NULL  ;
 
@@ -85,3 +86,12 @@ ALTER TABLE `order_status`
   ADD `send_email` TINYINT NOT NULL,
   ADD `append_order` TINYINT NOT NULL
 ;
+
+
+CREATE TABLE IF NOT EXISTS `options` (
+  `option_id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `group` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`option_id`)
+) ;

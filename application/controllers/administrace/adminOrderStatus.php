@@ -15,7 +15,7 @@ class AdminOrderStatus_Controller extends Administrace_Controller {
         $view = View::factory('admin/generic/table');
         $view->fields =  array('order_status_code','order_status_name');
         //$view->viewRow = new View('admin/orders/status_row');
-        $view->modelname = 'order_status';
+        $view->langfile = 'order_status';
         $view->id = $this->model->id;
         $view->data = $this->model->fetch();
         $this->template->content = $view->render();

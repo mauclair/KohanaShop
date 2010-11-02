@@ -14,7 +14,7 @@ class AdminShipping_Controller extends Administrace_Controller{
         $view->sortable  = array('shipping_name');
         $view->data = $this->model->fetch();
         $view->fields = array('shipping_name','shipping_cost','shipping_limit');
-        $view->modelname = 'shipping';
+        $view->langfile = 'shipping';
         $this->template->content = $view->render();
     }
 
@@ -22,6 +22,7 @@ class AdminShipping_Controller extends Administrace_Controller{
         $data = $this->model->get($shipping_id);
         if(!$data) url::redirect('administrace/adminShipping');
         $view = View::factory('admin/shipping/edit');
+        $view->set($data);
         $this->template->content = $view->render();
     }
 

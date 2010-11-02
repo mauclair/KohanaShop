@@ -11,7 +11,7 @@
     foreach($fields as $field=>$name){
         if(is_int($field)) {
             unset($fields[$field]) ;
-            $fields[$name]  = Kohana::lang("$modelname.$name");
+            $fields[$name]  = Kohana::lang("$langfile.$name");
         }
     }
 
